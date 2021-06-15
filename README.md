@@ -5,7 +5,7 @@ The Linux Photo Editing tool
 ### Dependencies Required
 - `libgtk-3-dev`
 - `libgranite-dev`
-- `vala`
+- `valac`
 > Note for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
 
 ### Compine and Run

@@ -2,16 +2,24 @@
 The Linux Photo Editing tool
 
 ## Compile
-### Install Dependencies
-- Install gtk+-3 using `sudo apt install libgtk-3-dev`
-- Install granite using `sudo apt install libgranite-dev`
-- Install vala for `non elementary distros` using `sudo apt install valac`
+### Dependencies Required
+- `libgtk-3-dev`
+- `libgranite-dev`
+- `vala`
 > Note for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
 
+### Compine and Run
+Once the above mentioned dependencies are resolved, Akira can be compiled and installed.
+```sh
+meson build --prefix=/usr
+cd build
+ninja
+```
+
 ## Questions
-if you still have questions you can join our public [Matrix Channel](https://app.element.io/#/room/#photostat:matrix.org)
+Feel free to join our public [Matrix Channel](https://app.element.io/#/room/#photostat:matrix.org), if you want to communicate
 
 ## 📜 License
 #### [GNU GPLv3 / Creative Commons BY-SA](./COPYING)
 
-Copyright © 2019-2020 The Photostat Project.
+Copyright © 2021 The Photostat Project.

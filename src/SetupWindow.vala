@@ -57,9 +57,8 @@ public class Photostat.SetupWindow : Gtk.Window {
             expand = true,
             margin = 12,
             orientation = Gtk.Orientation.VERTICAL,
-            valign = Gtk.Align.CENTER,
-            margin_top = 24,
-            margin_start = 200
+            halign = Gtk.Align.CENTER,
+            margin_top = 24
         };
 
         var empty_project_button = new Granite.Widgets.WelcomeButton (new_document_icon,

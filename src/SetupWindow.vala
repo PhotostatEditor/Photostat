@@ -81,7 +81,7 @@ public class Photostat.SetupWindow : Gtk.Window {
         content.add (title_label);
         content.add (subtitle_label);
         content.add (options);
-        
+
         add (content);
     }
 }

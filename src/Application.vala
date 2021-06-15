@@ -6,6 +6,8 @@ public class Photostat.Application : Gtk.Application {
     }
     
     public override void activate () {
+        Gtk.Settings.get_default ().set_property ("gtk-icon-theme-name", "elementary");
+        Gtk.Settings.get_default ().set_property ("gtk-theme-name", "io.elementary.stylesheet.blueberry");
         Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
         
         var window = new Photostat.SetupWindow (this);

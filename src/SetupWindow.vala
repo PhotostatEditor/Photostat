@@ -11,24 +11,67 @@ public class Photostat.SetupWindow : Gtk.Window {
     }
     
     construct {
-        this.get_style_context ().add_class ("rounded");
+        get_style_context ().add_class ("rounded");
         
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("flat");
         headerbar.get_style_context ().add_class ("default-decoration");
         
-        this.set_titlebar (headerbar);
+        set_titlebar (headerbar);
         
-        var grid = new Gtk.Grid () {
-            margin = 24
+        var app_icon = new Gtk.Image () {
+            gicon = new ThemedIcon ("application-default-icon"),
+            pixel_size = 128
         };
         
-        var setup = new Granite.Widgets.Welcome ("Photostat", "This is a demo");
-        setup.append ("document-new", "Create a new empty document", "Sub text");
-        setup.append ("system-file-manager", "Browse Images on you computer", "Sub text 2");
+        var new_document_icon = new Gtk.Image () {
+            gicon = new ThemedIcon ("document-new")
+        };
         
-        grid.attach (setup, 0, 1, 1, 1);
+        var file_manager_icon = new Gtk.Image () {
+            gicon = new ThemedIcon ("system-file-manager")
+        };
         
-        this.add (grid);
+        var title_label = new Gtk.Label ("Photostat") {
+            justify = Gtk.Justification.CENTER,
+            hexpand = true
+        };
+        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
+        
+        var subtitle_label = new Gtk.Label ("The Linux Photo Editing Tool") {
+            justify = Gtk.Justification.CENTER,
+            hexpand = true
+        };
+        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        
+        var options = new Gtk.Grid () {
+            expand = true,
+            margin = 12,
+            orientation = Gtk.Orientation.VERTICAL,
+            valign = Gtk.Align.CENTER,
+            margin_top = 24,
+            margin_start = 200
+        };
+        
+        var empty_project_button = new Granite.Widgets.WelcomeButton (new_document_icon, "Create a new empty document", "Sub text");
+        
+        var file_dialog_button = new Granite.Widgets.WelcomeButton (file_manager_icon, "Browse images on your computer", "Sub text");
+        
+        options.add (empty_project_button);
+        options.add (file_dialog_button);
+        
+        var content = new Gtk.Grid () {
+            expand = true,
+            margin = 12,
+            orientation = Gtk.Orientation.VERTICAL,
+            valign = Gtk.Align.CENTER
+        };
+        
+        content.add (app_icon);
+        content.add (title_label);
+        content.add (subtitle_label);
+        content.add (options);
+        
+        add (content);
     }
 }

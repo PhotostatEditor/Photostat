@@ -24,7 +24,9 @@ public class Photostat.SetupWindow : Gtk.Window {
     }
 
     private void build_ui () {
-        var headerbar = new Gtk.HeaderBar ();
+        var headerbar = new Gtk.HeaderBar () {
+            show_close_button = true
+        };
         headerbar.get_style_context ().add_class ("flat");
         headerbar.get_style_context ().add_class ("default-decoration");
 
@@ -34,16 +36,6 @@ public class Photostat.SetupWindow : Gtk.Window {
             hexpand = true,
             margin = 0
         };
-        var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic");
-        close_button.button_press_event.connect ((event) => {
-            if (event.button == Gdk.BUTTON_PRIMARY) {
-                destroy ();
-                return true;
-            }
-            return false;
-        });
-        main_grid.height_request = 24;
-        main_grid.add (close_button);
 
         headerbar.set_custom_title (main_grid);
 
@@ -81,10 +73,10 @@ public class Photostat.SetupWindow : Gtk.Window {
         };
 
         var empty_project_button = new Granite.Widgets.WelcomeButton (new_document_icon,
-            "Create a new empty document", "Creates a new empty image with the choosed size");
+            "Create a new empty document", "Start working on a new image from scratch");
 
         var file_dialog_button = new Granite.Widgets.WelcomeButton (file_manager_icon,
-            "Browse images on your computer", "Open an image file from your system");
+            "Browse images on your computer", "Open and edit an image file from your system");
 
         options.add (empty_project_button);
         options.add (file_dialog_button);

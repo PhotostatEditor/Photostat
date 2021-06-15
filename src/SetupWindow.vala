@@ -20,7 +20,7 @@ public class Photostat.SetupWindow : Gtk.Window {
 
     construct {
         get_style_context ().add_class ("rounded");
-        build_ui();
+        build_ui ();
     }
 
     private void build_ui () {

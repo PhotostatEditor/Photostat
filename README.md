@@ -9,7 +9,7 @@ The Linux Photo Editing tool
 > Note for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
 
 ### Compine and Run
-Once the above mentioned dependencies are resolved, Akira can be compiled and installed.
+Once the above mentioned dependencies are resolved, Photostat can be compiled and installed.
 ```sh
 meson build --prefix=/usr
 cd build

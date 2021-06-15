@@ -34,8 +34,8 @@ public class Photostat.SetupWindow : Gtk.Window {
             hexpand = true,
             margin = 0
         };
-        var close_button = new Gtk.Button.from_icon_name("window-close-symbolic");
-        close_button.button_press_event.connect((event) => {
+        var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic");
+        close_button.button_press_event.connect ((event) => {
             if (event.button == Gdk.BUTTON_PRIMARY) {
                 destroy ();
                 return true;
@@ -43,9 +43,9 @@ public class Photostat.SetupWindow : Gtk.Window {
             return false;
         });
         main_grid.height_request = 24;
-        main_grid.add(close_button);
+        main_grid.add (close_button);
 
-        headerbar.set_custom_title(main_grid);
+        headerbar.set_custom_title (main_grid);
 
         var app_icon = new Gtk.Image () {
             gicon = new ThemedIcon ("application-default-icon"),

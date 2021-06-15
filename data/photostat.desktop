@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Photostat
+GenericName=Photo Editor
+Comment=The Linux Photo Editing Tool
+Categories=Utility;Graphics;Photography;
+Exec=com.github.PhotostatEditor.Photostat
+Icon=com.github.PhotostatEditor.Photostat
+Terminal=false
+Type=Application
+Keywords=Photo;Graphics;Photography;Edit;Editing

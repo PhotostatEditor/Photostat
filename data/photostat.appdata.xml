@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2021 Rajdeep Singha <singharajdeep97@gmail.com> -->
+<component type="desktop">
+  <id>com.github.PhotostatEditor.Photostat</id>
+  <metadata_lecense>CCO</metadata_lecense>
+  <name>Photostat</name>
+  <summary>The Linux Photo Editing Tool</summary>
+  <description>
+    <p>
+      A modern Photo Editing Application
+    </p>
+    <p>
+      ⚠️ WARNING! Photostat is still in development and not ready for production. Missing features, random bugs, etc are to be expected.</p>
+    </p>
+    <p>
+      Photostat is a native Linux Photo Editing application built on Vala and Gtk. Photostat focuses on offering a modern and fast approach to Photo Editing. The main goal is to offer a valid, professional and easy to use solution for photo editing on Linux.
+    </p>
+  </description>
+</component>

@@ -2,7 +2,6 @@ public class Photostat.SetupWindow : Gtk.Window {
 
     public SetupWindow (Photostat.Application photostat_app) {
         Object (
-            deletable: false,
             height_request: 700,
             resizable: false,
             width_request: 950,
@@ -10,9 +9,9 @@ public class Photostat.SetupWindow : Gtk.Window {
         );
 
         // Handle dragging the entire widget
-        button_press_event.connect ((e) => {
-            if (e.button == Gdk.BUTTON_PRIMARY) {
-                begin_move_drag ((int) e.button, (int) e.x_root, (int) e.y_root, e.time);
+        button_press_event.connect ((event) => {
+            if (event.button == Gdk.BUTTON_PRIMARY) {
+                begin_move_drag ((int) event.button, (int) event.x_root, (int) event.y_root, event.time);
                 return true;
             }
             return false;
@@ -21,12 +20,32 @@ public class Photostat.SetupWindow : Gtk.Window {
 
     construct {
         get_style_context ().add_class ("rounded");
+        build_ui();
+    }
 
+    private void build_ui () {
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("flat");
         headerbar.get_style_context ().add_class ("default-decoration");
 
         set_titlebar (headerbar);
+
+        var main_grid = new Gtk.Grid () {
+            hexpand = true,
+            margin = 0
+        };
+        var close_button = new Gtk.Button.from_icon_name("window-close-symbolic");
+        close_button.button_press_event.connect((event) => {
+            if (event.button == Gdk.BUTTON_PRIMARY) {
+                destroy ();
+                return true;
+            }
+            return false;
+        });
+        main_grid.height_request = 24;
+        main_grid.add(close_button);
+
+        headerbar.set_custom_title(main_grid);
 
         var app_icon = new Gtk.Image () {
             gicon = new ThemedIcon ("application-default-icon"),

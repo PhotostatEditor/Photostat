@@ -8,6 +8,9 @@ The Linux Photo Editing tool
 - Install vala for `non elementary distros` using `sudo apt install valac`
 > Note for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
 
+## Questions
+if you still have questions you can join our public [Matrix Channel](https://app.element.io/#/room/#photostat:matrix.org)
+
 ## 📜 License
 #### [GNU GPLv3 / Creative Commons BY-SA](./COPYING)
 

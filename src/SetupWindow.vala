@@ -42,7 +42,7 @@ public class Photostat.SetupWindow : Gtk.Window {
             justify = Gtk.Justification.CENTER,
             hexpand = true
         };
-        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        subtitle_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
         
         var options = new Gtk.Grid () {
             expand = true,

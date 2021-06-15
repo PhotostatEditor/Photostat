@@ -8,6 +8,15 @@ public class Photostat.SetupWindow : Gtk.Window {
             width_request: 950,
             window_position: Gtk.WindowPosition.CENTER_ALWAYS
         );
+        
+        // Handle dragging the entire widget
+        button_press_event.connect ((e) => {
+            if (e.button == Gdk.BUTTON_PRIMARY) {
+                begin_move_drag ((int) e.button, (int) e.x_root, (int) e.y_root, e.time);
+                return true;
+            }
+            return false;
+        });
     }
     
     construct {

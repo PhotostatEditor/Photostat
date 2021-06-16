@@ -20,7 +20,7 @@
 
 public class Photostat.Window : Gtk.ApplicationWindow {
 
-    public GLib.Settings settings;
+    public GLib.Settings settings { get; private set };
 
     public Window (Photostat.Application photostat_app) {
         Object (

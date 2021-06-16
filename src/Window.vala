@@ -20,7 +20,7 @@
 
 public class Photostat.Window : Gtk.ApplicationWindow {
 
-    public GLib.Settings settings { get; private set };
+    public GLib.Settings settings { get; private set; }
 
     public Window (Photostat.Application photostat_app) {
         Object (
@@ -49,8 +49,7 @@ public class Photostat.Window : Gtk.ApplicationWindow {
         get_style_context ().add_class ("rounded");
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("flat");
-        headerbar.get_style_context ().add_class ("default-decoration");
-        headerbar.set_show_close_button (true);
+        headerbar.show_close_button = true;
         headerbar.custom_title = new Gtk.Label ("Untitled - Photostat");
 
         set_titlebar (headerbar);
@@ -60,7 +59,6 @@ public class Photostat.Window : Gtk.ApplicationWindow {
         int x, y, width, height;
         get_size (out x, out y);
         get_position (out width, out height);
-
         settings.set_int ("pos-x", x);
         settings.set_int ("pos-y", y);
         settings.set_int ("width", width);

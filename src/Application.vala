@@ -1,7 +1,7 @@
 public class Photostat.Application : Gtk.Application {
 
     construct {
-        application_id = "com.github.PhotostatEditor.Photostat";
+        application_id = "com.github.photostat-editor.photostat";
         flags = ApplicationFlags.FLAGS_NONE;
     }
 

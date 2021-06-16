@@ -27,22 +27,6 @@ public class Photostat.Window : Gtk.ApplicationWindow {
             application: photostat_app,
             window_position: Gtk.WindowPosition.CENTER
         );
-
-        settings = new GLib.Settings ("com.github.photostat-editor.photostat");
-
-        if (settings.get_int ("pos-x") != 0 && settings.get_int ("pos-y") != 0) {
-            move (settings.get_int ("pos-x"), settings.get_int ("pos-y"));
-        }
-
-        if (settings.get_boolean ("maximized")) {
-            maximize ();
-        }
-
-        resize (settings.get_int ("width"), settings.get_int ("height"));
-
-        delete_event.connect ((event) => {
-            return before_destroy ();
-        });
     }
 
     construct {
@@ -53,9 +37,25 @@ public class Photostat.Window : Gtk.ApplicationWindow {
         headerbar.custom_title = new Gtk.Label ("Untitled - Photostat");
 
         set_titlebar (headerbar);
+
+        settings = new GLib.Settings ("com.github.photostat-editor.photostat");
+
+        resize (settings.get_int ("width"), settings.get_int ("height"));
+
+        if (settings.get_int ("pos-x") != 0 && settings.get_int ("pos-y") != 0) {
+            move (settings.get_int ("pos-x"), settings.get_int ("pos-y"));
+        }
+
+        if (settings.get_boolean ("maximized")) {
+            maximize ();
+        }
+
+        delete_event.connect ((event) => {
+            return before_destroy ();
+        });
     }
 
-    private bool before_destroy () {
+    public bool before_destroy () {
         int x, y, width, height;
         get_size (out x, out y);
         get_position (out width, out height);

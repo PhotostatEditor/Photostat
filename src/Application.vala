@@ -20,9 +20,10 @@ public class Photostat.Application : Gtk.Application {
         set_accels_for_action ("app.quit", {"<Control>q"});
 
         quit_action.activate.connect (() => {
-            if (window != null) {
-                window.destroy ();
-            }
+            get_windows ().foreach ((win) => {
+                ((Photostat.Window)win).before_destroy ();
+                win.destroy ();
+            });
         });
     }
 }

@@ -30,9 +30,6 @@ public class Photostat.Window : Gtk.ApplicationWindow {
 
         settings = new GLib.Settings ("com.github.photostat-editor.photostat");
 
-        print (settings.get_int ("pos-x").to_string ());
-        print ("Yoo");
-
         if (settings.get_int ("pos-x") != 0 && settings.get_int ("pos-y") != 0) {
             move (settings.get_int ("pos-x"), settings.get_int ("pos-y"));
         }
@@ -49,7 +46,6 @@ public class Photostat.Window : Gtk.ApplicationWindow {
     }
 
     construct {
-        print ("TypeModule");
         get_style_context ().add_class ("rounded");
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("flat");
@@ -61,7 +57,6 @@ public class Photostat.Window : Gtk.ApplicationWindow {
     }
 
     private bool before_destroy () {
-        print ("TT");
         int x, y, width, height;
         get_size (out x, out y);
         get_position (out width, out height);

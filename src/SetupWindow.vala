@@ -75,6 +75,13 @@ public class Photostat.SetupWindow : Gtk.Window {
         var empty_project_button = new Granite.Widgets.WelcomeButton (new_document_icon,
             "Create a new empty document", "Start working on a new image from scratch");
 
+        empty_project_button.button_press_event.connect ((event) => {
+            var window = new Photostat.Window (application as Photostat.Application);
+            window.show_all ();
+            destroy ();
+            return true;
+        });
+
         var file_dialog_button = new Granite.Widgets.WelcomeButton (file_manager_icon,
             "Browse images on your computer", "Open and edit an image file from your system");
 

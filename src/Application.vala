@@ -1,7 +1,7 @@
 public class Photostat.Application : Gtk.Application {
 
     construct {
-        application_id = "com.github.PhotostatEditor.Photostat";
+        application_id = "com.github.photostat-editor.photostat";
         flags = ApplicationFlags.FLAGS_NONE;
     }
 
@@ -20,9 +20,10 @@ public class Photostat.Application : Gtk.Application {
         set_accels_for_action ("app.quit", {"<Control>q"});
 
         quit_action.activate.connect (() => {
-            if (window != null) {
-                window.destroy ();
-            }
+            get_windows ().foreach ((win) => {
+                ((Photostat.Window)win).before_destroy ();
+                win.destroy ();
+            });
         });
     }
 }

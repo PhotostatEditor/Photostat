@@ -2,6 +2,7 @@
 
 <h3 align="center">
   <img src="https://github.com/PhotostatEditor/Photostat/actions/workflows/build.yml/badge.svg" />
+  <img src="https://github.com/PhotostatEditor/Photostat/actions/workflows/lint.yml/badge.svg" />
 </h3>
 
 The Linux Photo Editing tool

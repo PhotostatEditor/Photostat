@@ -8,3 +8,5 @@ Icon=com.github.photostat-editor.photostat
 Terminal=false
 Type=Application
 Keywords=Photo;Graphics;Photography;Edit;Editing
+# TODO : Add all supported image files to the MimeType
+MimeType=image/png;image/jpeg;

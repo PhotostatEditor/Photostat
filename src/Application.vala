@@ -9,7 +9,7 @@ public class Photostat.Application : Gtk.Application {
         init_theme ();
 
         Photostat.Window opened_window = null;
-        
+
         get_windows ().foreach ((win) => {
             if (win is Photostat.Window) {
                 opened_window = win as Photostat.Window;

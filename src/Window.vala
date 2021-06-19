@@ -31,10 +31,15 @@ public class Photostat.Window : Gtk.ApplicationWindow {
 
     construct {
         get_style_context ().add_class ("rounded");
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.get_style_context ().add_class ("flat");
-        headerbar.show_close_button = true;
-        headerbar.custom_title = new Gtk.Label ("Untitled - Photostat");
+        var headerbar = new Gtk.HeaderBar () {
+            show_close_button = true,
+            custom_title = new Gtk.Label ("Untitled - Photostat")
+        };
+        // headerbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
+        var preferences_button = new Gtk.Button.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR);
+
+        headerbar.pack_end (preferences_button);
 
         set_titlebar (headerbar);
 

@@ -15,7 +15,7 @@
 * along with Photostat. If not, see <https://www.gnu.org/licenses/>.
 *
 * Authored by: Abdallah "Abdallah-Moh" Mohammad <abdullah_mam1@icloud.com>
-* Authored by: Singha "Suzie97" Rajdeep <singharajdeep97@gmail.com>
+* Authored by: Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
 */
 
 namespace Photostat {

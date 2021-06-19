@@ -32,6 +32,13 @@ public class Photostat.Layouts.HeaderBar : Gtk.HeaderBar {
         }
     }
 
+    public HeaderBar (Photostat.Window window) {
+        Object (
+            toggled: true,
+            window: window
+        );
+    }
+
     construct {
         show_close_button = true;
         title = ("Untitled");

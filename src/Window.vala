@@ -29,7 +29,7 @@ public class Photostat.Window : Gtk.ApplicationWindow {
 
     construct {
         get_style_context ().add_class ("rounded");
-        fix-settings
+
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("flat");
         headerbar.show_close_button = true;

@@ -13,6 +13,7 @@ The Linux Photo Editing tool
 
 - `libgtk-3-dev`
 - `libgranite-dev`
+- `meson`
 - `valac`
 - if you are on elementary os 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)
 

@@ -19,6 +19,7 @@
 */
 
 public class Photostat.Window : Gtk.ApplicationWindow {
+    public Photostat.Layouts.HeaderBar headerbar;
 
     public Window (Photostat.Application photostat_app) {
         Object (
@@ -28,6 +29,7 @@ public class Photostat.Window : Gtk.ApplicationWindow {
 
     construct {
         get_style_context ().add_class ("rounded");
+        fix-settings
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("flat");
         headerbar.show_close_button = true;

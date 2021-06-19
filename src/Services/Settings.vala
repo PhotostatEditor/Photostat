@@ -40,7 +40,7 @@ public class Photostat.Services.Settings : GLib.Settings {
       get { return get_boolean ("maximized"); }
       set { set_boolean ("maximized", value); }
     }
-
+  
     public Settings (string app_id) {
         Object (schema_id: app_id);
     }

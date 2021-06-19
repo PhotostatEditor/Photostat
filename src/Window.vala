@@ -43,7 +43,7 @@ public class Photostat.Window : Gtk.ApplicationWindow {
         delete_event.connect ((event) => {
             before_destroy ();
             // TODO: Check if image is saved
-            return true;
+            return false;
         });
     }
 

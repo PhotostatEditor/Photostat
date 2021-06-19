@@ -79,7 +79,7 @@ public class Photostat.SetupWindow : Gtk.Window {
             var window = new Photostat.Window (application as Photostat.Application);
             window.show_all ();
             destroy ();
-            return true;
+            return false;
         });
 
         var file_dialog_button = new Granite.Widgets.WelcomeButton (file_manager_icon,

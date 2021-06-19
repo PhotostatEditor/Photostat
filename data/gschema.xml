@@ -30,11 +30,5 @@
       <summary>Window maximized state</summary>
       <description>The maximized state of the main window</description>
     </key>
-
-    <key name="invert-sidebar" type="b">
-      <default>false</default>
-      <summary>Invert Panels Order</summary>
-      <description>Allow user to choose between default and inverted panels order.</description>
-    </key>
   </schema>
 </schemalist>

@@ -20,12 +20,9 @@
 
 public class Photostat.Window : Gtk.ApplicationWindow {
 
-    public GLib.Settings settings { get; private set; }
-
     public Window (Photostat.Application photostat_app) {
         Object (
-            application: photostat_app,
-            window_position: Gtk.WindowPosition.CENTER
+            application: photostat_app
         );
     }
 
@@ -34,36 +31,32 @@ public class Photostat.Window : Gtk.ApplicationWindow {
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("flat");
         headerbar.show_close_button = true;
-        headerbar.custom_title = new Gtk.Label ("Untitled - Photostat");
-
+        headerbar.custom_title = new Gtk.Label ("Photostat");
         set_titlebar (headerbar);
 
-        settings = new GLib.Settings ("com.github.photostat-editor.photostat");
-
-        resize (settings.get_int ("width"), settings.get_int ("height"));
-
-        if (settings.get_int ("pos-x") != 0 && settings.get_int ("pos-y") != 0) {
-            move (settings.get_int ("pos-x"), settings.get_int ("pos-y"));
-        }
-
-        if (settings.get_boolean ("maximized")) {
+        resize (settings.window_width, settings.window_height);
+        move (settings.pos_x, settings.pos_y);
+        if (settings.is_maximized) {
             maximize ();
         }
 
         delete_event.connect ((event) => {
-            return before_destroy ();
+            before_destroy ();
+            // TODO: Check if image is saved
+            return true;
         });
     }
 
-    public bool before_destroy () {
+    public void before_destroy () {
         int x, y, width, height;
-        get_size (out x, out y);
-        get_position (out width, out height);
-        settings.set_int ("pos-x", x);
-        settings.set_int ("pos-y", y);
-        settings.set_int ("width", width);
-        settings.set_int ("height", height);
-        settings.set_boolean ("maximized", is_maximized);
-        return false;
+
+        get_position (out x, out y);
+        get_size (out width, out height);
+
+        settings.pos_x = x;
+        settings.pos_y = y;
+        settings.window_width = width;
+        settings.window_height = height;
+        settings.is_maximized = is_maximized;
     }
 }

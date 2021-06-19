@@ -1,11 +1,10 @@
-# Photostat
-
+<h1 align="center"> Photostat </h1>
+<h3 align="center"> The Linux Photo Editing tool </h3>
 <h3 align="center">
   <img src="https://github.com/PhotostatEditor/Photostat/actions/workflows/build.yml/badge.svg" />
   <img src="https://github.com/PhotostatEditor/Photostat/actions/workflows/lint.yml/badge.svg" />
 </h3>
 
-The Linux Photo Editing tool
 
 ## Compile
 

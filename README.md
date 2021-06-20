@@ -25,7 +25,7 @@ Once the above mentioned dependencies are resolved, Photostat can be compiled an
 ```sh
 meson build --prefix=/usr
 cd build
-ninja
+sudo ninja install
 ```
 
 ## :thinking: Questions

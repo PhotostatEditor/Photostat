@@ -6,7 +6,7 @@
 </h3>
 
 
-## Compile
+## :hammer_and_wrench: Compile
 
 ### Dependencies Required
 
@@ -28,7 +28,7 @@ cd build
 ninja
 ```
 
-## Questions
+## :thinking: Questions
 
 Feel free to join our public [Matrix Channel](https://app.element.io/#/room/#photostat:matrix.org), if you want to communicate
 

@@ -20,6 +20,7 @@
 */
 
 public class Photostat.Services.Settings : GLib.Settings {
+    // Main Window Settings
     public int pos_x {
         get { return get_int ("pos-x"); }
         set { set_int ("pos-x", value); }
@@ -39,6 +40,10 @@ public class Photostat.Services.Settings : GLib.Settings {
     public bool is_maximized {
       get { return get_boolean ("maximized"); }
       set { set_boolean ("maximized", value); }
+    }
+    public bool use_symbolic {
+        get { return get_boolean ("use-symbolic"); }
+        set { set_boolean ("use-symbolic", value); }
     }
 
     public Settings (string app_id) {

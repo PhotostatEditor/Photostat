@@ -20,29 +20,27 @@
  *              Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
  */
 
-public class Photostat.Widgets.ButtonImage : Gtk.Image {
-    private string icon;
-    private Gtk.IconSize size;
+public class Photostat.Widgets.MenuButton : Gtk.Grid {
+    public Gtk.MenuButton button;
+    public Gtk.Label label_btn;
+    public ButtonImage image;
 
-    public ButtonImage (string icon_name, Gtk.IconSize icon_size = Gtk.IconSize.LARGE_TOOLBAR) {
-        icon = icon_name;
-        size = icon_size;
-        margin = 0;
+    public MenuButton (string icon_name, string name, string[]? accels = null) {
+        label_btn = new Gtk.Label (name);
+        // label_btn.get_style_context ().add_class ("header-label") // CSS has not been set yet
 
-        settings.changed["use-symbolic"].connect (update_image);
-        update_image ();
-    }
+        button = new Gtk.MenuButton () {
+            can_focus = false,
+            halign = Gtk.Align.CENTER,
+            tooltip_markup = Granite.markup_accel_tooltip (accels, name)
+        };
 
-    ~ButtonImage () {
-        settings.changed["use-symbolic"].disconnect (update_image);
-    }
+        image = new ButtonImage (icon_name);
+        button.add (image);
 
-    private void update_image () {
-        if (settings.use_symbolic) {
-            set_from_icon_name ("%s-symbolic".printf (icon), Gtk.IconSize.SMALL_TOOLBAR);
-            return;
-        }
+        attach (button, 0, 0, 1, 1);
+        attach (label_btn, 0, 1, 1, 1);
 
-        set_from_icon_name (icon.replace ("-symbolic", ""), size);
+        valign = Gtk.Align.CENTER;
     }
 }

@@ -30,5 +30,11 @@
       <summary>Window maximized state</summary>
       <description>The maximized state of the main window</description>
     </key>
+
+    <key name="use-symbolic" type="b">
+      <default>false</default>
+      <summary>Use Symbolic Icons</summary>
+      <description>Allow the user to switch between normal and symbolic icons on the Headerbar.</description>
+    </key>
   </schema>
 </schemalist>

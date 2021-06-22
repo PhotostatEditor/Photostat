@@ -17,7 +17,7 @@
  * along with Photostat. If not, see <https://www.gnu.org/licenses/>.
  *
  * Authored by: Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
- */
+ */             Abdallah "Abdallah-Moh" Mohammad <abdullah_mam1@icloud.com>
 
 public class Photostat.Layouts.HeaderBar : Gtk.HeaderBar {
     public weak Photostat.Window window { get; construct; }

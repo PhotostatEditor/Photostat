@@ -21,29 +21,31 @@
  */
 
 public class Photostat.Window : Gtk.ApplicationWindow {
+    public weak Photostat.Application app { get; construct; }
+    public Photostat.Services.EventBus event_bus;
+
+    public Photostat.Services.ActionManager action_manager;
     public Photostat.Layouts.HeaderBar headerbar;
 
     public Window (Photostat.Application photostat_app) {
         Object (
             application: photostat_app,
-            icon_name: "com.github.photostat-editor-akira"
+            app: photostat_app,
+            icon_name: "com.github.photostat-editor-photostat"
         );
     }
 
     construct {
         get_style_context ().add_class ("rounded");
 
-        // var headerbar = new Gtk.HeaderBar ();
-        // headerbar.get_style_context ().add_class ("flat");
-        // headerbar.show_close_button = true;
-        // headerbar.custom_title = new Gtk.Label ("Photostat");
-        // set_titlebar (headerbar);
-
+        event_bus = new Photostat.Services.EventBus ();
+        action_manager = new Photostat.Services.ActionManager (app, this);
         headerbar = new Photostat.Layouts.HeaderBar (this);
 
         build_ui ();
 
         resize (settings.window_width, settings.window_height);
+
         move (settings.pos_x, settings.pos_y);
         if (settings.is_maximized) {
             maximize ();

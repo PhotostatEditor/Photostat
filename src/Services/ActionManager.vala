@@ -27,7 +27,7 @@ public class Photostat.Services.ActionManager : Object {
     public SimpleActionGroup actions { get; construct; }
 
     public const string ACTION_PREFIX = "win.";
-    public const string ACTION_PREFERENCES  = "action_preferences";
+    public const string ACTION_PREFERENCES = "action_preferences";
 
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
 

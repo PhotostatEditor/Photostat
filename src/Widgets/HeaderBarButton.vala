@@ -51,25 +51,15 @@ public class Photostat.Widgets.HeaderBarButton : Gtk.Grid {
         valign = Gtk.Align.CENTER;
         sensitive = false;
 
-    /* Work on the settings has not been started yet */
-        // update_label ();
-        // build_signals ();
+        update_label ();
 
-    //     settings.changed["show-label"].connect (() => {
-    //         update_label ();
-    //     });
-    // }
+        settings.changed["show-label"].connect (() => {
+            update_label ();
+        });
+    }
 
-    // private void update_label () {
-    //     label_btn.visible = settings.show_label;
-    //     label_btn.no_show_all = !settings.show_label;
-    // }
-
-    // private void build_signals () {
-    //     window.event_bus.change_sensitivity.connect (() => {
-    //         if (type == sensitive_type) {
-    //             sensitive = !sensitive;
-    //         }
-    //     });
+    private void update_label () {
+        label_btn.visible = settings.show_label;
+        label_btn.no_show_all = !settings.show_label;
     }
 }

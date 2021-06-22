@@ -16,8 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Photostat. If not, see <https://www.gnu.org/licenses/>.
  *
- * Authored by: Abdallah "Abdallah-Moh" Mohammad <abdullah_mam1@icloud.com>
- *              Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
+ * Authored by: Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
  */
 
 public class Photostat.Layouts.HeaderBar : Gtk.HeaderBar {
@@ -52,8 +51,8 @@ public class Photostat.Layouts.HeaderBar : Gtk.HeaderBar {
             ("Preferences"), {"<Ctrl>comma"}) {
                 sensitive = true
             };
-        // preferences.button.action_name = Photostat.Services.ActionManager.ACTION_PREFIX
-        //     + Photostat.Services.ActionManager.ACTION_PREFERENCES; // TODO work on the services later
+        preferences.button.action_name = Photostat.Services.ActionManager.ACTION_PREFIX
+            + Photostat.Services.ActionManager.ACTION_PREFERENCES;
 
         pack_start (menu);
         pack_end (preferences);

@@ -4,10 +4,13 @@ executable (
     'SetupWindow.vala',
     'Window.vala',
     'Services/Settings.vala',
+    'Services/ActionManager.vala',
+    'Services/EventBus.vala',
     'Widgets/HeaderBarButton.vala',
     'Widgets/ButtonImage.vala',
     'Widgets/MenuButton.vala',
     'Layouts/HeaderBar.vala',
+    'Dialogs/SettingsDialog.vala',
     dependencies: [
         dependency('gtk+-3.0'),
         dependency('granite')

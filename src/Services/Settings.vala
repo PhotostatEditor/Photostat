@@ -41,9 +41,15 @@ public class Photostat.Services.Settings : GLib.Settings {
       get { return get_boolean ("maximized"); }
       set { set_boolean ("maximized", value); }
     }
+
+    // Theme Settings
     public bool use_symbolic {
         get { return get_boolean ("use-symbolic"); }
         set { set_boolean ("use-symbolic", value); }
+    }
+    public bool show_label {
+        get { return get_boolean ("show-label"); }
+        set { set_boolean ("show-label", value); }
     }
 
     public Settings (string app_id) {

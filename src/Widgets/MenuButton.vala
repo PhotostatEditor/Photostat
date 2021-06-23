@@ -34,6 +34,7 @@ public class Photostat.Widgets.MenuButton : Gtk.Grid {
             halign = Gtk.Align.CENTER,
             tooltip_markup = Granite.markup_accel_tooltip (accels, name)
         };
+        button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         image = new ButtonImage (icon_name);
         button.add (image);

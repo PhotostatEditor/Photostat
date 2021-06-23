@@ -27,11 +27,13 @@ public class Photostat.Services.ActionManager : Object {
     public SimpleActionGroup actions { get; construct; }
 
     public const string ACTION_PREFIX = "win.";
+    public const string ACTION_NEW_WINDOW = "action_new_window";
     public const string ACTION_PREFERENCES = "action_preferences";
 
     public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
 
     private const ActionEntry[] ACTION_ENTRIES = {
+        { ACTION_NEW_WINDOW, action_new_window },
         { ACTION_PREFERENCES, action_preferences },
     };
 
@@ -43,6 +45,7 @@ public class Photostat.Services.ActionManager : Object {
     }
 
     static construct {
+        action_accelerators.set (ACTION_NEW_WINDOW, "<Control>n");
         action_accelerators.set (ACTION_PREFERENCES, "<Control>comma");
     }
 
@@ -55,6 +58,10 @@ public class Photostat.Services.ActionManager : Object {
         while (iter.next ()) {
             app.set_accels_for_action (ACTION_PREFIX + iter.get_key (), {iter.get_value () });
         }
+    }
+
+    private void action_new_window () {
+        app.new_window ();
     }
 
     private void action_preferences () {

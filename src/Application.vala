@@ -39,11 +39,11 @@ public class Photostat.Application : Gtk.Application {
 
         var window = new Photostat.SetupWindow (this);
         window.show_all ();
-        this.add_window (window);
+        add_window (window);
 
         var quit_action = new SimpleAction ("quit", null);
 
-        this.add_action (quit_action);
+        add_action (quit_action);
         set_accels_for_action ("app.quit", {"<Control>q"});
 
         quit_action.activate.connect (() => {
@@ -52,6 +52,10 @@ public class Photostat.Application : Gtk.Application {
                 win.destroy ();
             });
         });
+    }
+
+    public void new_window () {
+        new Photostat.Window (this).present ();
     }
 }
 

@@ -42,5 +42,15 @@ public class Photostat.Widgets.MenuButton : Gtk.Grid {
         attach (label_btn, 0, 1, 1, 1);
 
         valign = Gtk.Align.CENTER;
+        update_label ();
+
+        settings.changed["show-label"].connect (() => {
+            update_label ();
+        });
+    }
+
+    private void update_label () {
+        label_btn.visible = settings.show_label;
+        label_btn.no_show_all = !settings.show_label;
     }
 }

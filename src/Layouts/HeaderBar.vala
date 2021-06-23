@@ -47,6 +47,8 @@ public class Photostat.Layouts.HeaderBar : Gtk.HeaderBar {
         title = ("Untitled");
 
         menu = new Widgets.MenuButton ("document-open", ("Menu"), null);
+        var menu_popover = build_main_menu_popover ();
+        menu.button.popover = menu_popover;
 
         preferences = new Widgets.HeaderBarButton (window, "open-menu",
             ("Preferences"), {"<Ctrl>comma"}) {
@@ -57,5 +59,51 @@ public class Photostat.Layouts.HeaderBar : Gtk.HeaderBar {
 
         pack_start (menu);
         pack_end (preferences);
+    }
+
+    private Gtk.PopoverMenu build_main_menu_popover () {
+        var grid = new Gtk.Grid () {
+            margin_top = 6,
+            margin_bottom = 3,
+            orientation = Gtk.Orientation.VERTICAL,
+            width_request = 240,
+            name = "main"
+        };
+
+        var new_window_button = create_model_button (
+            ("New Window"),
+            "window-new-symbolic",
+            Photostat.Services.ActionManager.ACTION_PREFIX
+            + Photostat.Services.ActionManager.ACTION_NEW_WINDOW);
+
+        grid.add (new_window_button);
+        grid.show_all ();
+
+        var popover = new Gtk.PopoverMenu ();
+        popover.add (grid);
+        popover.child_set_property (grid, "submenu", "main");
+
+        return popover;
+    }
+
+    private Gtk.ModelButton create_model_button (string text, string? icon, string? accels = null) {
+        var button = new Gtk.ModelButton ();
+        button.get_child ().destroy ();
+        var label = new Granite.AccelLabel.from_action_name (text, accels);
+
+        if (icon != null) {
+            var image = new Gtk.Image.from_icon_name (icon, Gtk.IconSize.MENU);
+            image.margin_end = 6;
+            label.attach_next_to (
+                image,
+                label.get_child_at (0, 0),
+                Gtk.PositionType.LEFT
+            );
+        }
+
+        button.add (label);
+        button.action_name = accels;
+
+        return button;
     }
 }

@@ -10,6 +10,7 @@ executable (
     'Widgets/ButtonImage.vala',
     'Widgets/MenuButton.vala',
     'Layouts/HeaderBar.vala',
+    'Layouts/HeaderBar.vala',
     'Dialogs/SettingsDialog.vala',
     dependencies: [
         dependency('gtk+-3.0'),

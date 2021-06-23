@@ -19,4 +19,4 @@ jobs:
     - name: Vala Lint
       run: io.elementary.vala-lint -d .
     - name: Markdown Lint
-      uses: actionshub/markdownlint@maste
+      uses: actionshub/markdownlint@master

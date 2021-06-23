@@ -34,6 +34,6 @@ Feel free to join our public [Matrix Channel](https://app.element.io/#/room/#pho
 
 ## 📜 License
 
-#### [GNU GPLv3 / Creative Commons BY-SA](./COPYING)
+#### [GNU GPLv3 / Creative Commons BY-SA](COPYING)
 
 Copyright © 2021 The Photostat Project.

@@ -16,5 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Lint
+    - name: Vala Lint
       run: io.elementary.vala-lint -d .
+    - name: Markdown Lint
+      uses: actionshub/markdownlint@maste

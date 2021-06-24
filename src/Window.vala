@@ -26,6 +26,7 @@ public class Photostat.Window : Gtk.ApplicationWindow {
 
     public Photostat.Services.ActionManager action_manager;
     public Photostat.Layouts.HeaderBar headerbar;
+    public Photostat.Layouts.MainWindow main_window;
 
     public Window (Photostat.Application photostat_app) {
         Object (
@@ -41,25 +42,32 @@ public class Photostat.Window : Gtk.ApplicationWindow {
         event_bus = new Photostat.Services.EventBus ();
         action_manager = new Photostat.Services.ActionManager (app, this);
         headerbar = new Photostat.Layouts.HeaderBar (this);
+        main_window = new Photostat.Layouts.MainWindow (this);
 
         build_ui ();
 
         resize (settings.window_width, settings.window_height);
 
         move (settings.pos_x, settings.pos_y);
+
         if (settings.is_maximized) {
             maximize ();
         }
+
+        show_app ();
+    }
+
+    private void build_ui () {
+        set_titlebar (headerbar);
+        set_border_width (0);
 
         delete_event.connect ((event) => {
             before_destroy ();
             // TODO: Check if image is saved
             return false;
         });
-    }
 
-    private void build_ui () {
-        set_titlebar (headerbar);
+        add (main_window);
     }
 
     public void before_destroy () {
@@ -73,5 +81,10 @@ public class Photostat.Window : Gtk.ApplicationWindow {
         settings.window_width = width;
         settings.window_height = height;
         settings.is_maximized = is_maximized;
+    }
+
+    public void show_app () {
+        show_all ();
+        show ();
     }
 }

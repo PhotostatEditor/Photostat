@@ -25,20 +25,25 @@ namespace Photostat {
 }
 
 public class Photostat.Application : Gtk.Application {
+    public GLib.List<Window> windows;
 
     construct {
         application_id = "com.github.photostat-editor.photostat";
+
         flags = ApplicationFlags.FLAGS_NONE;
+
         settings = new Photostat.Services.Settings ("com.github.photostat-editor.photostat");
+        windows = new GLib.List<Window> ();
+    }
+
+    public void new_window () {
+        new Photostat.Window (this).present ();
     }
 
     public override void activate () {
-        Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
-        Gtk.Settings.get_default ().set_property ("gtk-icon-theme-name", "elementary");
-        Gtk.Settings.get_default ().set_property ("gtk-theme-name", "io.elementary.stylesheet.blueberry");
+        init_theme ();
 
-        var window = new Photostat.SetupWindow (this);
-        window.show_all ();
+        var window = new Photostat.Window (this);
         add_window (window);
 
         var quit_action = new SimpleAction ("quit", null);
@@ -54,8 +59,14 @@ public class Photostat.Application : Gtk.Application {
         });
     }
 
-    public void new_window () {
-        new Photostat.Window (this).present ();
+    private void init_theme () {
+        if (windows.length () > 0) {
+            return;
+        }
+
+        Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+        Gtk.Settings.get_default ().set_property ("gtk-icon-theme-name", "elementary");
+        Gtk.Settings.get_default ().set_property ("gtk-theme-name", "io.elementary.stylesheet.blueberry");
     }
 }
 

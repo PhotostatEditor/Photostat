@@ -20,7 +20,7 @@
  *              Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
  */
 
-public class Photostat.Dialogs.SettingsDialog : Gtk.Dialog {
+public class Photostat.Dialogs.SettingsDialog : Granite.Dialog {
     public weak Photostat.Window window { get; construct; }
     private Gtk.Stack stack;
     private Gtk.Switch label_switch;
@@ -56,6 +56,11 @@ public class Photostat.Dialogs.SettingsDialog : Gtk.Dialog {
         grid.attach (stack, 1, 2, 1, 1);
 
         get_content_area ().add (grid);
+
+        var close_button = (Gtk.Button) add_button (("Close"), Gtk.ResponseType.CLOSE);
+        close_button.clicked.connect (() => {
+            destroy ();
+        });
     }
 
     private Gtk.Widget get_general_box () {

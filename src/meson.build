@@ -1,7 +1,6 @@
 executable (
     meson.project_name (),
     'Application.vala',
-    'SetupWindow.vala',
     'Window.vala',
     'Services/Settings.vala',
     'Services/ActionManager.vala',
@@ -10,7 +9,7 @@ executable (
     'Widgets/ButtonImage.vala',
     'Widgets/MenuButton.vala',
     'Layouts/HeaderBar.vala',
-    'Layouts/HeaderBar.vala',
+    'Layouts/MainWindow.vala',
     'Dialogs/SettingsDialog.vala',
     dependencies: [
         dependency('gtk+-3.0'),

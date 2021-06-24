@@ -38,7 +38,7 @@
     </key>
 
     <key name="show-label" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Show button labels</summary>
       <description>Show or Hide the button labels to slim the UI.</description>
     </key>

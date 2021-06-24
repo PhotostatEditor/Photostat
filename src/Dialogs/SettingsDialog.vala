@@ -80,13 +80,15 @@ public class Photostat.Dialogs.SettingsDialog : Granite.Dialog {
         grid.column_spacing = 12;
         grid.column_homogeneous = true;
 
-        grid.attach (new SettingsLabel (("Show Button Labels:")), 0, 5, 1, 1);
-        label_switch = new SettingsSwitch ("show-label");
-        grid.attach (label_switch, 1, 5, 1, 1);
+        grid.attach (new SettingsHeader (("ToolBar Style")), 0, 0, 2, 1);
 
-        grid.attach (new SettingsLabel (("Use Symbolic Icons:")), 0, 6, 1, 1);
+        grid.attach (new SettingsLabel (("Show Button Labels:")), 0, 1, 1, 1);
+        label_switch = new SettingsSwitch ("show-label");
+        grid.attach (label_switch, 1, 1, 1, 1);
+
+        grid.attach (new SettingsLabel (("Use Symbolic Icons:")), 0, 2, 1, 1);
         symbolic_switch = new SettingsSwitch ("use-symbolic");
-        grid.attach (symbolic_switch, 1, 6, 1, 1);
+        grid.attach (symbolic_switch, 1, 2, 1, 1);
 
         return grid;
     }

@@ -20,7 +20,7 @@
  *              Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
  */
 
-public class Photostat.Window : Gtk.ApplicationWindow {
+public class Photostat.Window : Hdy.ApplicationWindow {
     public weak Photostat.Application app { get; construct; }
     public Photostat.Services.EventBus event_bus;
 
@@ -36,9 +36,11 @@ public class Photostat.Window : Gtk.ApplicationWindow {
         );
     }
 
-    construct {
-        get_style_context ().add_class ("rounded");
+    static construct {
+        Hdy.init ();
+    }
 
+    construct {
         event_bus = new Photostat.Services.EventBus ();
         action_manager = new Photostat.Services.ActionManager (app, this);
         headerbar = new Photostat.Layouts.HeaderBar (this);
@@ -58,16 +60,19 @@ public class Photostat.Window : Gtk.ApplicationWindow {
     }
 
     private void build_ui () {
-        set_titlebar (headerbar);
         set_border_width (0);
+
+        var container_grid = new Gtk.Grid ();
+        container_grid.attach (headerbar, 0, 0);
+        container_grid.attach (main_window, 0, 1);
+
+        add (container_grid);
 
         delete_event.connect ((event) => {
             before_destroy ();
             // TODO: Check if image is saved
             return false;
         });
-
-        add (main_window);
     }
 
     public void before_destroy () {

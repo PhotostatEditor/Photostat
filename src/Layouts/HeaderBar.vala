@@ -20,7 +20,7 @@
  *              Abdallah "Abdallah-Moh" Mohammad <abdullah_mam1@icloud.com>
  */
 
-public class Photostat.Layouts.HeaderBar : Gtk.HeaderBar {
+public class Photostat.Layouts.HeaderBar : Hdy.HeaderBar {
     public weak Photostat.Window window { get; construct; }
 
     public Widgets.HeaderBarButton preferences;
@@ -37,6 +37,7 @@ public class Photostat.Layouts.HeaderBar : Gtk.HeaderBar {
 
     public HeaderBar (Photostat.Window window) {
         Object (
+            hexpand: true,
             toggled: true,
             window: window
         );

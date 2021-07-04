@@ -17,20 +17,26 @@
  * along with Photostat. If not, see <https://www.gnu.org/licenses/>.
  *
  * Authored by: Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
- *              Abdallah "Abdallah-Moh" Mohammad <abdullah_mam1@icloud.com>
  */
 
-public class Photostat.Layouts.MainWindow : Gtk.Grid {
-    public weak Photostat.Window window { get; construct; }
+public class Photostat.Widgets.TemplateRow : Gtk.ListBoxRow {
+    private Gtk.Label row_label;
+    private Gtk.Image row_icon;
 
-    public MainWindow (Photostat.Window window) {
-        Object (window: window);
-    }
+    public TemplateRow (string name, string icon_name) {
 
-    construct {
-        // Add sidebars and main canvas here
-        var welcome_view = new Photostat.Widgets.WelcomeView (window);
+        row_label = new Gtk.Label (name) {
+            margin_start = 4,
+            halign = Gtk.Align.START,
+            hexpand = true,
+            ellipsize = Pango.EllipsizeMode.END
+        };
+        row_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.MENU);
 
-        add (welcome_view);
+        var grid = new Gtk.Grid ();
+        grid.attach (row_icon, 0, 0);
+        grid.attach (row_label, 1, 0);
+
+        add (grid);
     }
 }

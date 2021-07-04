@@ -8,9 +8,12 @@ executable (
     'Widgets/HeaderBarButton.vala',
     'Widgets/ButtonImage.vala',
     'Widgets/MenuButton.vala',
+    'Widgets/WelcomeView.vala',
+    'Widgets/TemplateRow.vala',
     'Layouts/HeaderBar.vala',
     'Layouts/MainWindow.vala',
     'Dialogs/SettingsDialog.vala',
+    'Dialogs/TemplateChooser.vala',
     dependencies: [
         dependency('gtk+-3.0'),
         dependency('granite'),

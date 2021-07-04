@@ -17,20 +17,28 @@
  * along with Photostat. If not, see <https://www.gnu.org/licenses/>.
  *
  * Authored by: Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
- *              Abdallah "Abdallah-Moh" Mohammad <abdullah_mam1@icloud.com>
  */
 
-public class Photostat.Layouts.MainWindow : Gtk.Grid {
+public class Photostat.Widgets.WelcomeView : Granite.Widgets.Welcome {
     public weak Photostat.Window window { get; construct; }
 
-    public MainWindow (Photostat.Window window) {
-        Object (window: window);
+    public WelcomeView (Photostat.Window window) {
+        Object (
+            window: window,
+            title: ("Import Some Photos"),
+            subtitle: ("Open a photo to begin editing")
+        );
     }
 
     construct {
-        // Add sidebars and main canvas here
-        var welcome_view = new Photostat.Widgets.WelcomeView (window);
+        append ("document-new", ("New Document"), ("Create a new empty document"));
+        append ("document-open", ("Open Image"), ("Open a saved image"));
 
-        add (welcome_view);
+        activated.connect ((i) => {
+            if (i == 0) {
+                var template_view = new Photostat.Dialogs.TemplateChooser (window);
+                template_view.show_all ();
+            }
+        });
     }
 }

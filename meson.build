@@ -1,4 +1,4 @@
-project ('com.github.photostat-editor.photostat', 'vala', 'c')
+project ('com.github.photostat_editor.photostat', 'vala', 'c')
 subdir('src')
 subdir('data')
 

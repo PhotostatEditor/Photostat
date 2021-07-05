@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2021 Rajdeep Singha <singharajdeep97@gmail.com> -->
 <component type="desktop">
-  <id>com.github.photostat-editor.photostat</id>
+  <id>com.github.photostat_editor.photostat</id>
   <metadata_lecense>CCO</metadata_lecense>
   <name>Photostat</name>
   <summary>The Linux Photo Editing Tool</summary>

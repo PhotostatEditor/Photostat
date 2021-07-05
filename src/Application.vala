@@ -28,11 +28,11 @@ public class Photostat.Application : Gtk.Application {
     public GLib.List<Window> windows;
 
     construct {
-        application_id = "com.github.photostat-editor.photostat";
+        application_id = "com.github.photostat_editor.photostat";
 
         flags = ApplicationFlags.FLAGS_NONE;
 
-        settings = new Photostat.Services.Settings ("com.github.photostat-editor.photostat");
+        settings = new Photostat.Services.Settings ("com.github.photostat_editor.photostat");
         windows = new GLib.List<Window> ();
     }
 

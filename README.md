@@ -18,7 +18,7 @@
 
   > Note: for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
 
-### Compine and Run
+### Compile and Run
 
 Once the above mentioned dependencies are resolved, Photostat can be compiled and installed.
 
@@ -27,6 +27,14 @@ meson build --prefix=/usr
 cd build
 sudo ninja install
 ```
+
+## Install a flatpak test build (recommended for machines that are not on elementary OS 6)
+
+`flatpak-builder build com.github.photostat_editor.photostat.yml --user --install --force-clean`
+
+Once the command above is complete, you'll be able to launch the app from your applications list.
+
+Note: Since flatpak runs the app in a sandbox, some operations will be different from how you would usually perform them. Please refer to the flatpak documentaion for help: https://docs.flatpak.org/en/latest/index.html
 
 ## :thinking: Questions
 

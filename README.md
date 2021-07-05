@@ -28,7 +28,7 @@ cd build
 sudo ninja install
 ```
 
-Note: If you are having trouble with compiling, try [building with flatpak](#build-with-flatpak)
+Note: If you are having trouble with compiling, try [building with flatpak](#build-with-flatpak).
 
 ## Build With Flatpak
 
@@ -38,7 +38,7 @@ Note: If you are having trouble with compiling, try [building with flatpak](#bui
 
 Once the command above is complete, you'll be able to launch the app from your applications list.
 
-Note: Since flatpak apps runs in a sandbox, some development operations will be different from how you would usually perform them. Please refer to the flatpak documentaion for help: https://docs.flatpak.org/en/latest/index.html
+Note: Since flatpak apps runs in a sandbox, some development operations will be different from how you would usually perform them. Please refer to the Flatpak documentation for help: https://docs.flatpak.org/en/latest/index.html
 
 ## :thinking: Questions
 

@@ -28,13 +28,17 @@ cd build
 sudo ninja install
 ```
 
-## Install a flatpak test build (recommended for machines that are not on elementary OS 6)
+Note: If you are having trouble with compiling, try [building with flatpak](#build-with-flatpak)
+
+## Build With Flatpak
+
+(Recommended for machines that are not running elementary OS 6)
 
 `flatpak-builder build com.github.photostat_editor.photostat.yml --user --install --force-clean`
 
 Once the command above is complete, you'll be able to launch the app from your applications list.
 
-Note: Since flatpak runs the app in a sandbox, some operations will be different from how you would usually perform them. Please refer to the flatpak documentaion for help: https://docs.flatpak.org/en/latest/index.html
+Note: Since flatpak apps runs in a sandbox, some development operations will be different from how you would usually perform them. Please refer to the flatpak documentaion for help: https://docs.flatpak.org/en/latest/index.html
 
 ## :thinking: Questions
 

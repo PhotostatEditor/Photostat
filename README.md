@@ -14,11 +14,11 @@
 - `libgranite-dev`
 - `meson`
 - `valac`
-- if you are on elementary os 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)
+- if you are on elementary OS 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)
 
   > Note: for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
 
-### Compine and Run
+### Compile and Run
 
 Once the above mentioned dependencies are resolved, Photostat can be compiled and installed.
 
@@ -27,6 +27,18 @@ meson build --prefix=/usr
 cd build
 sudo ninja install
 ```
+
+Note: If you are having trouble with compiling, try [building with flatpak](#build-with-flatpak)
+
+## Build With Flatpak
+
+(Recommended for machines that are not running elementary OS 6)
+
+`flatpak-builder build com.github.photostat_editor.photostat.yml --user --install --force-clean`
+
+Once the command above is complete, you'll be able to launch the app from your applications list.
+
+Note: Since flatpak apps runs in a sandbox, some development operations will be different from how you would usually perform them. Please refer to the flatpak documentaion for help: https://docs.flatpak.org/en/latest/index.html
 
 ## :thinking: Questions
 

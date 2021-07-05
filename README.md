@@ -14,7 +14,7 @@
 - `libgranite-dev`
 - `meson`
 - `valac`
-- if you are on elementary os 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)
+- if you are on elementary OS 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)
 
   > Note: for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
 

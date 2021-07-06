@@ -16,7 +16,7 @@ These are mostly guidelines, not rules. Use your best judgment, and feel free to
 * [Getting started](#getting-started)
 * [Reporting bugs and issues](#reporting-bugs-and-issues)
 * [Feature requests](#feature-requests)
-* [Your first contributions](#your-first-contribution)
+* [Your first contribution](#your-first-contribution)
 * [Pull requests](#pull-requests)
 * [Code review process](#code-review-process)
 

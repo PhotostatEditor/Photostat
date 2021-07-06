@@ -32,13 +32,18 @@
      private Widgets.TemplateRow iconography_row;
      private Widgets.TemplateRow devices_row;
 
+     public Gtk.Button cancel_btn;
+
      public TemplateChooser (Photostat.Window _window) {
          Object (
              window: _window,
              resizable: false,
              deletable: true,
              width_request: 1000,
-             height_request: 700
+             height_request: 700,
+             window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
+             modal: true,
+             transient_for: _window
          );
      }
 
@@ -47,19 +52,19 @@
      }
 
      construct {
-         // var sidebar_header = new Hdy.HeaderBar () {
-         //     has_subtitle = false,
-         //     show_close_button = false
-         // };
-         // sidebar_header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-         // sidebar_header.get_style_context ().add_class ("default-decoration");
+         var sidebar_header = new Hdy.HeaderBar () {
+             has_subtitle = false,
+             show_close_button = false
+         };
+         sidebar_header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+         sidebar_header.get_style_context ().add_class ("default-decoration");
 
-        // var individualview_header = new Hdy.HeaderBar () {
-        //     has_subtitle = false,
-        //     show_close_button = false
-        // };
-        // individualview_header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        // individualview_header.get_style_context ().add_class ("default-decoration");
+        var individualview_header = new Hdy.HeaderBar () {
+            has_subtitle = false,
+            show_close_button = false
+        };
+        individualview_header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        individualview_header.get_style_context ().add_class ("default-decoration");
 
         var search_entry = new Gtk.SearchEntry () {
             margin_start = 9,
@@ -107,11 +112,33 @@
         sidebar_grid.attach (scrolled_window, 0, 1);
 
         // TODO: Replace this placeholder with the artboard templates
-        var placeholder = new Gtk.Label ("No Artboards Selected") {
-            expand = true
+        // var placeholder = new Gtk.Label ("No Artboards Selected") {
+        //     expand = true
+        // };
+        // placeholder.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        // placeholder.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+
+        var iconography_stack = new Gtk.Stack () {
+            transition_type = Gtk.StackTransitionType.SLIDE_DOWN
         };
-        placeholder.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-        placeholder.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+
+
+        var devices_icon = new Gtk.Image () {
+            gicon = new ThemedIcon ("address-book-new"),
+            pixel_size = 24
+        };
+
+        var frame = new Gtk.Frame (null) {
+            hexpand = true,
+            vexpand = true,
+            margin_top = 10
+        };
+
+        var artboard_scroll = new Gtk.ScrolledWindow (null, null) {
+            hscrollbar_policy = Gtk.PolicyType.NEVER
+        };
+
+        frame.add (artboard_scroll);
 
         var choose_template_label = new Gtk.Label ("Choose a Template");
         choose_template_label.set_markup ("<span font_desc='Inter 15'><b>Choose a Template</b></span>");
@@ -123,12 +150,13 @@
         var create_btn = new Gtk.Button.with_label ("Create");
         create_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-        var cancel_btn = new Gtk.Button.with_label ("Cancel") {
+        cancel_btn = new Gtk.Button.with_label ("Cancel") {
             margin_end = 6
         };
 
         cancel_btn.clicked.connect (() => {
             destroy ();
+            _window.accept_focus = true;
         });
 
         var width_entry = new Gtk.Entry ();
@@ -190,7 +218,7 @@
         };
         // individual_grid.attach (individualview_header, 0, 0);
         individual_grid.attach (choose_template_grid, 0, 0);
-        individual_grid.attach (placeholder, 0, 1);
+        individual_grid.attach (frame, 0, 1);
         individual_grid.attach (separator, 0, 2);
         individual_grid.attach (setup_grid, 0, 3);
         individual_grid.attach (button_grid, 0, 4);

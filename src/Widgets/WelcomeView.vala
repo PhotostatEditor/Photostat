@@ -38,6 +38,9 @@ public class Photostat.Widgets.WelcomeView : Granite.Widgets.Welcome {
             if (i == 0) {
                 var template_view = new Photostat.Dialogs.TemplateChooser (window);
                 template_view.show_all ();
+                if (window.get_children () != null) {
+                    window.accept_focus = false;
+                }
             }
         });
     }

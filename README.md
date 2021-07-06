@@ -42,7 +42,12 @@ Note: Since flatpak apps runs in a sandbox, some development operations will be 
 
 ## :thinking: Questions
 
-Feel free to join our public [Matrix Channel](https://app.element.io/#/room/#photostat:matrix.org), if you want to communicate
+Feel free to join our public [Matrix Channel](https://app.element.io/#/room/#photostat:matrix.org), if you want to communicate.
+
+## 👨‍💻 Contributing
+
+Don't hesitate to contribute code, design, feature requests or bug reports to this project. If you are working on a new feature, please consider creating an issue about it before submitting a Pull Request.
+It is highly recommended to read our [contributing guidelines](CONTRIBUTING.md) :page_with_curl: before contributing anything.
 
 ## 📜 License
 

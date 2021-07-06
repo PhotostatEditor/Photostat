@@ -1,6 +1,6 @@
 <h1 align="center">
     <br>
-    <img src="Photostat Logo.png" alt="Photostat">
+    <img src="Photostat Logo.svg" alt="Photostat">
 </h1>
 <h3 align="center"> The Linux Photo Editing tool </h3>
 <h3 align="center">

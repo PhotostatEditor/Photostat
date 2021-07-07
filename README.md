@@ -35,8 +35,6 @@ Note: If you are having trouble with compiling, try [building with flatpak](#bui
 
 ## Build With Flatpak
 
-(Recommended for machines that are not running elementary OS 6)
-
 `flatpak-builder build com.github.photostat_editor.photostat.yml --user --install --force-clean`
 
 Once the command above is complete, you'll be able to launch the app from your applications list.

@@ -156,6 +156,9 @@
 
         cancel_btn.clicked.connect (() => {
             destroy ();
+        });
+        
+        destroy.connect (() => {
             _window.accept_focus = true;
         });
 

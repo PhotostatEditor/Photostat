@@ -33,7 +33,7 @@ sudo ninja install
 
 Note: If you are having trouble with compiling, try [building with flatpak](#build-with-flatpak).
 
-## Build With Flatpak
+### Build With Flatpak
 
 `flatpak-builder build com.github.photostat_editor.photostat.yml --user --install --force-clean`
 

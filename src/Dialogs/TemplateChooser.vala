@@ -43,7 +43,8 @@
              height_request: 700,
              window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
              modal: true,
-             transient_for: _window
+             transient_for: _window,
+             type_hint: Gdk.WindowTypeHint.DIALOG
          );
      }
 

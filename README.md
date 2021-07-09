@@ -36,6 +36,12 @@ Note: If you are having trouble with compiling, try [building with flatpak](#bui
 
 ### Build With Flatpak
 
+#### Make sure you have the elementary sdk
+```sh
+flatpak remote-add --if-not-exists --system appcenter https://flatpak.elementary.io/repo.flatpakrepo
+flatpak install -y appcenter io.elementary.Platform io.elementary.Sdk
+```
+
 `flatpak-builder build com.github.photostat_editor.photostat.yml --user --install --force-clean`
 
 Once the command above is complete, you'll be able to launch the app from your applications list.

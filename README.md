@@ -6,6 +6,7 @@
 <h3 align="center">
   <img src="https://github.com/PhotostatEditor/Photostat/actions/workflows/build.yml/badge.svg" />
   <img src="https://github.com/PhotostatEditor/Photostat/actions/workflows/lint.yml/badge.svg" />
+  <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
 </h3>
 
 

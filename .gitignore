@@ -1,6 +1,9 @@
+# Folders
 /build/
 /builddir/
 .flatpak-builder
 .vscode
+
+# Files
 *.sublime-project
 *.sublime-workspace

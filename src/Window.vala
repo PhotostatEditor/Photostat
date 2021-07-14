@@ -32,7 +32,7 @@ public class Photostat.Window : Hdy.ApplicationWindow {
         Object (
             application: photostat_app,
             app: photostat_app,
-            icon_name: "com.github.photostat_editor-photostat"
+            icon_name: "com.github.photostat_editor.photostat"
         );
     }
 

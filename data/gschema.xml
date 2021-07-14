@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema path="/com/github/photostat-editor/photostat/" id="com.github.photostat-editor.photostat">
+  <schema path="/com/github/photostat_editor/photostat/" id="com.github.photostat_editor.photostat">
     <key name="pos-x" type="i">
       <default>0</default>
       <summary>Horizontal position</summary>

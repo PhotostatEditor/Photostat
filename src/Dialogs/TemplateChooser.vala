@@ -138,8 +138,9 @@
         frame.add (artboard_scroll);
 
         var choose_template_label = new Gtk.Label ("Choose a Template");
-        choose_template_label.set_markup ("<span font_desc='Inter 15'><b>Choose a Template</b></span>");
+        // choose_template_label.set_markup ("<span font_desc='Inter 15'><b>Choose a Template</b></span>");
         choose_template_label.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+        choose_template_label.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
         var choose_template_grid = new Gtk.Grid ();
         choose_template_grid.add (choose_template_label);

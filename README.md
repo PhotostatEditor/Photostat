@@ -16,6 +16,7 @@
 
 - `libgtk-3-dev`
 - `libgranite-dev`
+- `libhandy-1-dev`
 - `meson`
 - `valac`
 - if you are on elementary OS 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)

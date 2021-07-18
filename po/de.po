@@ -1,0 +1,19 @@
+#: data/photostat.desktop:3
+msgid "Photostat"
+msgstr ""
+
+#: data/photostat.desktop:4
+msgid "Photo Editor"
+msgstr ""
+
+#: data/photostat.desktop:5
+msgid "The Linux Photo Editing Tool"
+msgstr ""
+
+#: data/photostat.desktop:8
+msgid "com.github.photostat_editor.photostat"
+msgstr ""
+
+#: data/photostat.desktop:11
+msgid "Photo;Graphics;Photography;Edit;Editing"
+msgstr ""

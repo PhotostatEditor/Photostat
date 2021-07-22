@@ -93,6 +93,9 @@ Unsure where to begin contributing to Photostat? You can start by looking throug
 
 At this point, you're ready to make your changes! Don't hesitate to ask for help.
 
+## Code Style
+At Photostat, we follow the elementary [Code Style](https://docs.elementary.io/develop/writing-apps/code-style). If you can, please try to respect the recommended code style.
+
 ## Pull requests
 
 If you want to start working on a new feature, please consider opening issue before submitting a PR as we might have already started work on that particular feature or your implementation of that feature might not meet the design vision and goal of the app.

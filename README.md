@@ -9,6 +9,7 @@
   <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
 </h3>
 
+Photostat is a native image editor designed to provide an easy to use and modern interface. It is built with GTK and Vala. The goal is to provide an open source, fast, powerful and accessible alternative to other photo editing tools.
 
 ## :hammer_and_wrench: Compile
 

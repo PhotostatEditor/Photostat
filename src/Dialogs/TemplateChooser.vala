@@ -125,32 +125,37 @@
         // placeholder.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
         // placeholder.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
-        var frame = new Gtk.Frame (null) {
-            hexpand = true,
-            vexpand = true,
-            margin_top = 10
+        var template_view = new Gtk.FlowBox () {
+            activate_on_single_click = true,
+            homogeneous = true,
+            selection_mode = Gtk.SelectionMode.SINGLE
         };
+        template_view.get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
 
-        var artboard_scroll = new Gtk.ScrolledWindow (null, null) {
-            hscrollbar_policy = Gtk.PolicyType.NEVER
+        var template_scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            hscrollbar_policy = Gtk.PolicyType.NEVER,
+            expand = true
         };
-
-        frame.add (artboard_scroll);
+        template_view.add (template_scrolled_window);
 
         var choose_template_label = new Gtk.Label ("Choose a Template");
         // choose_template_label.set_markup ("<span font_desc='Inter 15'><b>Choose a Template</b></span>");
         choose_template_label.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
         choose_template_label.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
-        var choose_template_grid = new Gtk.Grid ();
+        var choose_template_grid = new Gtk.Grid () {
+            margin_top = 24,
+            margin_start = 24,
+            margin_bottom = 12
+        };
         choose_template_grid.add (choose_template_label);
+
+        var show_advanced_button = new Gtk.Button.with_label ("Show Advanced");
 
         var create_btn = new Gtk.Button.with_label ("Create");
         create_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-        cancel_btn = new Gtk.Button.with_label ("Cancel") {
-            margin_end = 6
-        };
+        cancel_btn = new Gtk.Button.with_label ("Cancel");
 
         cancel_btn.clicked.connect (() => {
             destroy ();
@@ -160,22 +165,85 @@
             _window.accept_focus = true;
         });
 
-        var setup_grid = new SetupGrid ();
-
-        var button_grid = new Gtk.Grid () {
-            halign = Gtk.Align.END
+        var width_label = new Gtk.Label ("Width: ") {
+            halign = Gtk.Align.END,
+            margin_start = 32
         };
-        button_grid.attach (cancel_btn, 0, 0);
-        button_grid.attach (create_btn, 1, 0);
+        var width_entry = new Gtk.Entry ();
 
-        var individual_grid = new Gtk.Grid () {
-            margin = 16
+        var height_label = new Gtk.Label ("Height: ") {
+            halign = Gtk.Align.END,
+            margin_start = 32
         };
-        // individual_grid.attach (individualview_header, 0, 0);
+        var height_entry = new Gtk.Entry ();
+
+        var dpi_label = new Gtk.Label ("DPI: ") {
+            halign = Gtk.Align.END,
+            margin_start = 32
+        };
+        var dpi_combobox = new Gtk.ComboBox ();
+
+        var unit_label = new Gtk.Label ("Units: ") {
+            halign = Gtk.Align.END,
+            margin_start = 32
+        };
+        var unit_combobox = new Gtk.ComboBox ();
+
+        var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+        size_group.add_widget (width_entry);
+        size_group.add_widget (height_entry);
+        size_group.add_widget (dpi_combobox);
+        size_group.add_widget (unit_combobox);
+
+        var options_grid = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 12,
+            halign = Gtk.Align.CENTER,
+            margin = 24
+        };
+
+        options_grid.attach (width_label, 0, 0, 1, 1);
+        options_grid.attach (width_entry, 1, 0, 1, 1);
+        options_grid.attach (height_label, 0, 1, 1, 1);
+        options_grid.attach (height_entry, 1, 1, 1, 1);
+        options_grid.attach (dpi_label, 2, 0, 1, 1);
+        options_grid.attach (dpi_combobox, 3, 0, 1, 1);
+        options_grid.attach (unit_label, 2, 1, 1, 1);
+        options_grid.attach (unit_combobox, 3, 1, 1, 1);
+
+        var button_grid = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
+            hexpand = true,
+            layout_style = Gtk.ButtonBoxStyle.END,
+            spacing = 6,
+        };
+        button_grid.add (show_advanced_button);
+        button_grid.add (cancel_btn);
+        button_grid.add (create_btn);
+        button_grid.set_child_secondary (show_advanced_button, true);
+
+        var button_size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+        button_size_group.add_widget (show_advanced_button);
+        button_size_group.add_widget (cancel_btn);
+        button_size_group.add_widget (create_btn);
+
+        var setup_grid = new Gtk.Grid () {
+            margin = 12,
+            orientation = Gtk.Orientation.VERTICAL,
+            row_spacing = 12
+        };
+        setup_grid.add (options_grid);
+        setup_grid.add (button_grid);
+
+        var actionbar = new Gtk.ActionBar ();
+        actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
+        actionbar.add (setup_grid);
+
+        var individual_grid = new Gtk.Grid ();
         individual_grid.attach (choose_template_grid, 0, 0);
-        individual_grid.attach (frame, 0, 1);
-        individual_grid.attach (setup_grid, 0, 2);
-        individual_grid.attach (button_grid, 0, 3);
+        individual_grid.attach (new Gtk.Separator (Gtk.Orientation.HORIZONTAL), 0, 1);
+        individual_grid.attach (template_view, 0, 2);
+        // individual_grid.attach (new Gtk.Separator (Gtk.Orientation.HORIZONTAL), 0, 3);
+        individual_grid.attach (actionbar, 0, 3);
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         paned.pack1 (sidebar_grid, false, false);
@@ -184,50 +252,59 @@
         add (paned);
     }
 
-    private class SetupGrid : Gtk.Grid {
-        construct {
-            row_spacing = 12;
-            halign = Gtk.Align.CENTER;
-            margin = 12;
+    // private class SetupGrid : Gtk.Grid {
+    //     construct {
+    //         row_spacing = 12;
+    //         column_spacing = 12;
+    //         halign = Gtk.Align.CENTER;
+    //         margin = 24;
 
-            var width_label = new Gtk.Label ("Width: ") {
-                halign = Gtk.Align.END,
-                margin_end = 10
-            };
-            var width_entry = new Gtk.Entry ();
+    //         var width_label = new Gtk.Label ("Width: ") {
+    //             halign = Gtk.Align.END,
+    //             margin_start = 32
+    //         };
+    //         var width_entry = new Gtk.Entry ();
 
-            var height_label = new Gtk.Label ("Height: ") {
-                halign = Gtk.Align.END,
-                margin_end = 10
-            };
-            var height_entry = new Gtk.Entry ();
+    //         var height_label = new Gtk.Label ("Height: ") {
+    //             halign = Gtk.Align.END,
+    //             margin_start = 32
+    //         };
+    //         var height_entry = new Gtk.Entry ();
 
-            var dpi_label = new Gtk.Label ("DPI: ") {
-                halign = Gtk.Align.END,
-                margin_end = 10
-            };
-            var dpi_combobox = new Gtk.ComboBox ();
+    //         var dpi_label = new Gtk.Label ("DPI: ") {
+    //             halign = Gtk.Align.END,
+    //             margin_start = 32
+    //         };
+    //         var dpi_combobox = new Gtk.ComboBox ();
 
-            var unit_label = new Gtk.Label ("Units: ") {
-                halign = Gtk.Align.END,
-                margin_end = 10
-            };
-            var unit_combobox = new Gtk.ComboBox ();
+    //         var unit_label = new Gtk.Label ("Units: ") {
+    //             halign = Gtk.Align.END,
+    //             margin_start = 32
+    //         };
+    //         var unit_combobox = new Gtk.ComboBox ();
 
-            var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-            size_group.add_widget (width_entry);
-            size_group.add_widget (height_entry);
-            size_group.add_widget (dpi_combobox);
-            size_group.add_widget (unit_combobox);
+    //         var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+    //         size_group.add_widget (width_entry);
+    //         size_group.add_widget (height_entry);
+    //         size_group.add_widget (dpi_combobox);
+    //         size_group.add_widget (unit_combobox);
 
-            attach (width_label, 0, 0, 1, 1);
-            attach (width_entry, 1, 0, 1, 1);
-            attach (height_label, 0, 1, 1, 1);
-            attach (height_entry, 1, 1, 1, 1);
-            attach (dpi_label, 0, 2, 1, 1);
-            attach (dpi_combobox, 1, 2, 1, 1);
-            attach (unit_label, 0, 3, 1, 1);
-            attach (unit_combobox, 1, 3, 1, 1);
-        }
-    }
+    //         var button_grid = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
+    //             hexpand = true,
+    //             layout_style = Gtk.ButtonBoxStyle.END,
+    //             spacing = 6,
+    //             child_secondary = show_advanced_button
+    //         };
+    //         button_grid.add (show_advanced_button);
+    //         button_grid.add (cancel_btn);
+    //         button_grid.add (create_btn);
+
+    //         var button_size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+    //         button_size_group.add_widget (cancel_btn);
+    //         button_size_group.add_widget (create_btn);
+    //         button_size_group.add_widget (_btn);
+
+
+    //     }
+    // }
 }

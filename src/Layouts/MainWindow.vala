@@ -23,11 +23,46 @@
 public class Photostat.Layouts.MainWindow : Gtk.Grid {
     public weak Photostat.Window window { get; construct; }
 
+    public Layouts.MainCanvas main_canvas;
+    public Layouts.RightSideBar right_sidebar;
+    public Layouts.PropertiesBar properties_bar;
+    public Layouts.ToolsBar tools_bar;
+
+    public Gtk.Paned main_pane;
+    public Gtk.Paned child_pane;
+
+    public Gtk.Grid left_sidebar;
+
+
     public MainWindow (Photostat.Window window) {
         Object (window: window);
     }
 
     construct {
-        // Add sidebars and main canvas here
+        right_sidebar = new Layouts.RightSideBar (window);
+        properties_bar = new Layouts.PropertiesBar (window);
+        main_canvas = new Layouts.MainCanvas (window);
+        tools_bar = new Photostat.Layouts.ToolsBar (window);
+
+        main_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+        child_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+
+        left_sidebar = new Gtk.Grid ();
+        left_sidebar.get_style_context ().add_class ("sidebar");
+        left_sidebar.vexpand = true;
+        left_sidebar.hexpand = true;
+        left_sidebar.attach (tools_bar, 0, 0, 1, 1);
+        left_sidebar.attach (properties_bar, 1, 0, 1, 1);
+
+        main_pane.vexpand = true;
+        main_pane.hexpand = true;
+
+        main_pane.pack2 (child_pane, true, false);
+        child_pane.pack1 (main_canvas, true, false);
+
+        main_pane.pack1 (left_sidebar, false, false);
+        child_pane.pack2 (right_sidebar, false, false);
+
+        attach (main_pane, 0, 0, 1, 1);
     }
 }

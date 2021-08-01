@@ -25,14 +25,14 @@ public class Photostat.Layouts.MainWindow : Gtk.Grid {
 
     public Layouts.MainCanvas main_canvas;
     public Layouts.RightSideBar right_sidebar;
-    public Layouts.PropertiesBar properties_bar;    
+    public Layouts.PropertiesBar properties_bar;
     public Layouts.ToolsBar tools_bar;
 
     public Gtk.Paned main_pane;
     public Gtk.Paned child_pane;
 
     public Gtk.Grid left_sidebar;
-    
+
 
     public MainWindow (Photostat.Window window) {
         Object (window: window);

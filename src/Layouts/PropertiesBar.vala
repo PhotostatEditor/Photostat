@@ -34,7 +34,7 @@ public class Photostat.Layouts.PropertiesBar : Gtk.Grid {
         var title = new Gtk.Grid ();
         var title_label = new Gtk.Label ("Properties");
         title_label.hexpand = true;
-        title.attach (titleLabel, 0, 0, 1, 1);
+        title.attach (title_label, 0, 0, 1, 1);
         attach (title, 0, 0, 1, 1);
         show_all ();
     }

@@ -1,5 +1,6 @@
 executable (
     meson.project_name (),
+    asresources,
     'Application.vala',
     'Window.vala',
 
@@ -14,7 +15,7 @@ executable (
     'Layouts/HeaderBar.vala',
     'Layouts/MainWindow.vala',
     'Layouts/PropertiesBar.vala',
-    'Layouts/LeftSideBar.vala',
+    'Layouts/RightSideBar.vala',
     'Layouts/MainCanvas.vala',
     'Layouts/ToolsBar.vala',
 

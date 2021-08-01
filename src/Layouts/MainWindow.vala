@@ -24,14 +24,14 @@ public class Photostat.Layouts.MainWindow : Gtk.Grid {
     public weak Photostat.Window window { get; construct; }
 
     public Layouts.MainCanvas main_canvas;
-    public Layouts.LeftSideBar left_sidebar;
+    public Layouts.RightSideBar right_sidebar;
     public Layouts.PropertiesBar properties_bar;    
     public Layouts.ToolsBar tools_bar;
 
     public Gtk.Paned main_pane;
     public Gtk.Paned child_pane;
 
-    public Gtk.Grid right_sidebar;
+    public Gtk.Grid left_sidebar;
     
 
     public MainWindow (Photostat.Window window) {
@@ -39,23 +39,20 @@ public class Photostat.Layouts.MainWindow : Gtk.Grid {
     }
 
     construct {
-        left_sidebar = new Layouts.LeftSideBar (window);
+        right_sidebar = new Layouts.RightSideBar (window);
         properties_bar = new Layouts.PropertiesBar (window);
         main_canvas = new Layouts.MainCanvas (window);
         tools_bar = new Photostat.Layouts.ToolsBar (window);
 
         main_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         child_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-        var right_sidebar_separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
-        right_sidebar_separator.vexpand = true;
-        right_sidebar_separator.width_request = 1;
 
-        right_sidebar = new Gtk.Grid ();
-        right_sidebar.vexpand = true;
-        right_sidebar.hexpand = true;
-        right_sidebar.attach (tools_bar, 0, 0, 1, 1);
-        right_sidebar.attach (right_sidebar_separator, 1, 0, 1, 1);
-        right_sidebar.attach (properties_bar, 2, 0, 1, 1);
+        left_sidebar = new Gtk.Grid ();
+        left_sidebar.get_style_context ().add_class ("sidebar");
+        left_sidebar.vexpand = true;
+        left_sidebar.hexpand = true;
+        left_sidebar.attach (tools_bar, 0, 0, 1, 1);
+        left_sidebar.attach (properties_bar, 1, 0, 1, 1);
 
         main_pane.vexpand = true;
         main_pane.hexpand = true;
@@ -63,8 +60,8 @@ public class Photostat.Layouts.MainWindow : Gtk.Grid {
         main_pane.pack2 (child_pane, true, false);
         child_pane.pack1 (main_canvas, true, false);
 
-        main_pane.pack1 (right_sidebar, false, false);
-        child_pane.pack2 (left_sidebar, false, false);
+        main_pane.pack1 (left_sidebar, false, false);
+        child_pane.pack2 (right_sidebar, false, false);
 
         attach (main_pane, 0, 0, 1, 1);
     }

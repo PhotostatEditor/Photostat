@@ -19,10 +19,10 @@
  * Authored by: Abdallah "Abdallah-Moh" Mohammad <abdallah.mam29@gmail.com>
 */
 
-public class Photostat.Layouts.LeftSideBar : Gtk.Grid {
+public class Photostat.Layouts.RightSideBar : Gtk.Grid {
     public weak Photostat.Window window { get; construct; }
 
-    public LeftSideBar (Photostat.Window window) {
+    public RightSideBar (Photostat.Window window) {
         Object (
             window: window,
             orientation: Gtk.Orientation.HORIZONTAL
@@ -32,7 +32,7 @@ public class Photostat.Layouts.LeftSideBar : Gtk.Grid {
     construct {
         get_style_context ().add_class ("sidebar");
         // TODO: Add a tab that contains history and layers
-        attach (new Gtk.Label ("This is the left sidebar"), 0, 0, 1, 1);
+        attach (new Gtk.Label ("This is the right sidebar"), 0, 0, 1, 1);
         show_all ();
     }
 }

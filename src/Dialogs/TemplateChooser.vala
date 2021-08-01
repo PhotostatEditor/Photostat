@@ -166,16 +166,14 @@
         });
 
         var width_label = new Gtk.Label ("Width: ") {
-            halign = Gtk.Align.END,
-            margin_start = 32
+            halign = Gtk.Align.END
         };
-        var width_entry = new Gtk.Entry ();
+        var width_entry = new Gtk.SpinButton.with_range (1, 99999, 1);
 
         var height_label = new Gtk.Label ("Height: ") {
-            halign = Gtk.Align.END,
-            margin_start = 32
+            halign = Gtk.Align.END
         };
-        var height_entry = new Gtk.Entry ();
+        var height_entry = new Gtk.SpinButton.with_range (1, 99999, 1);
 
         var dpi_label = new Gtk.Label ("DPI: ") {
             halign = Gtk.Align.END,
@@ -251,60 +249,4 @@
 
         add (paned);
     }
-
-    // private class SetupGrid : Gtk.Grid {
-    //     construct {
-    //         row_spacing = 12;
-    //         column_spacing = 12;
-    //         halign = Gtk.Align.CENTER;
-    //         margin = 24;
-
-    //         var width_label = new Gtk.Label ("Width: ") {
-    //             halign = Gtk.Align.END,
-    //             margin_start = 32
-    //         };
-    //         var width_entry = new Gtk.Entry ();
-
-    //         var height_label = new Gtk.Label ("Height: ") {
-    //             halign = Gtk.Align.END,
-    //             margin_start = 32
-    //         };
-    //         var height_entry = new Gtk.Entry ();
-
-    //         var dpi_label = new Gtk.Label ("DPI: ") {
-    //             halign = Gtk.Align.END,
-    //             margin_start = 32
-    //         };
-    //         var dpi_combobox = new Gtk.ComboBox ();
-
-    //         var unit_label = new Gtk.Label ("Units: ") {
-    //             halign = Gtk.Align.END,
-    //             margin_start = 32
-    //         };
-    //         var unit_combobox = new Gtk.ComboBox ();
-
-    //         var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-    //         size_group.add_widget (width_entry);
-    //         size_group.add_widget (height_entry);
-    //         size_group.add_widget (dpi_combobox);
-    //         size_group.add_widget (unit_combobox);
-
-    //         var button_grid = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
-    //             hexpand = true,
-    //             layout_style = Gtk.ButtonBoxStyle.END,
-    //             spacing = 6,
-    //             child_secondary = show_advanced_button
-    //         };
-    //         button_grid.add (show_advanced_button);
-    //         button_grid.add (cancel_btn);
-    //         button_grid.add (create_btn);
-
-    //         var button_size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-    //         button_size_group.add_widget (cancel_btn);
-    //         button_size_group.add_widget (create_btn);
-    //         button_size_group.add_widget (_btn);
-
-
-    //     }
-    // }
 }

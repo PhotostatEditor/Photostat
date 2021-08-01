@@ -1,0 +1,13 @@
+src/Application.vala
+src/Window.vala
+src/Services/Settings.vala
+src/Services/ActionManager.vala
+src/Services/EventBus.vala
+src/Widgets/HeaderBarButton.vala
+src/Widgets/ButtonImage.vala
+src/Widgets/MenuButton.vala
+src/Layouts/HeaderBar.vala
+src/Layouts/MainWindow.vala
+src/Dialogs/SettingsDialog.vala
+data/photostat.appdata.xml
+data/photostat.desktop

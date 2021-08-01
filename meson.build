@@ -9,5 +9,6 @@ asresources = gnome.compile_resources(
 
 subdir('src')
 subdir('data')
+subdir('po')
 
 meson.add_install_script('build-aux/meson/post_install.py')

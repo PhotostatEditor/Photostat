@@ -2,13 +2,14 @@
     <br>
     <img src="Photostat Logo.svg" alt="Photostat">
 </h1>
-<h3 align="center"> The Linux Photo Editing tool </h3>
+<h3 align="center"> Open, powerful and accessible photo editing tool </h3>
 <h3 align="center">
   <img src="https://github.com/PhotostatEditor/Photostat/actions/workflows/build.yml/badge.svg" />
   <img src="https://github.com/PhotostatEditor/Photostat/actions/workflows/lint.yml/badge.svg" />
   <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
 </h3>
 
+Photostat is a native image editor designed to provide an easy to use and modern interface. It is built with GTK and Vala. The goal is to provide an open source, fast, powerful and accessible alternative to other photo editing tools.
 
 ## :hammer_and_wrench: Compile
 
@@ -16,6 +17,7 @@
 
 - `libgtk-3-dev`
 - `libgranite-dev`
+- `libhandy-1-dev`
 - `meson`
 - `valac`
 - if you are on elementary OS 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)

@@ -62,7 +62,7 @@ In order to determine whether you are dealing with a security issue, ask yoursel
 
 * Can I access something that's not mine, or something I shouldn't have access to?
 * Can I disable something for other people?
-If the answer to either of those two questions are "yes", then you're probably dealing with a security issue. Note that even if you answer "no" to both questions, you may still be dealing with a security issue, so if you're unsure, just email us at _castellani.ale@gmail.com_.
+If the answer to either of those two questions are "yes", then you're probably dealing with a security issue. Note that even if you answer "no" to both questions, you may still be dealing with a security issue, so if you're unsure, just email us at _singharajdeep@gmail.com_.
 
 ### Bugs/Issues
 
@@ -92,6 +92,9 @@ Unsure where to begin contributing to Photostat? You can start by looking throug
 > Working on your first Pull Request? You can learn how from this [link](https://www.firsttimersonly.com/).
 
 At this point, you're ready to make your changes! Don't hesitate to ask for help.
+
+## Code Style
+At Photostat, we follow the elementary [Code Style](https://docs.elementary.io/develop/writing-apps/code-style). If you can, please try to respect the recommended code style.
 
 ## Pull requests
 

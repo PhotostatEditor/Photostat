@@ -1,17 +1,33 @@
+i18n = import('i18n')
+
+add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language:'c')
+
 executable (
     meson.project_name (),
+    asresources,
     'Application.vala',
     'Window.vala',
+
     'Services/Settings.vala',
     'Services/ActionManager.vala',
     'Services/EventBus.vala',
+
     'Widgets/HeaderBarButton.vala',
     'Widgets/ButtonImage.vala',
     'Widgets/MenuButton.vala',
+<<<<<<< HEAD
     'Widgets/WelcomeView.vala',
     'Widgets/TemplateRow.vala',
+=======
+
+>>>>>>> master
     'Layouts/HeaderBar.vala',
     'Layouts/MainWindow.vala',
+    'Layouts/PropertiesBar.vala',
+    'Layouts/RightSideBar.vala',
+    'Layouts/MainCanvas.vala',
+    'Layouts/ToolsBar.vala',
+
     'Dialogs/SettingsDialog.vala',
     'Dialogs/TemplateChooser.vala',
     dependencies: [

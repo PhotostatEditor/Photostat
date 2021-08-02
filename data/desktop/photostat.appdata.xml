@@ -11,10 +11,9 @@
     </p>
     <p>
       ⚠️ WARNING! Photostat is still in development and not ready for production. Missing features, random bugs, etc are to be expected.</p>
-  </p>
-  <p>
+    </p>
+    <p>
       Photostat is a native Linux Photo Editing application built on Vala and Gtk. Photostat focuses on offering a modern and fast approach to Photo Editing. The main goal is to offer a valid, professional and easy to use solution for photo editing on Linux.
-  </p>
-</description>
-</component>
+    </p>
+  </description>
 </component>

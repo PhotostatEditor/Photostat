@@ -30,7 +30,7 @@ public class Photostat.Layouts.RightSideBar : Gtk.Grid {
     }
 
     construct {
-        get_style_context ().add_class ("sidebar");
+        get_style_context ().add_class ("panel");
         // TODO: Add a tab that contains history and layers
         attach (new Gtk.Label ("This is the right sidebar"), 0, 0, 1, 1);
         show_all ();

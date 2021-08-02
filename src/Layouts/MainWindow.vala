@@ -64,6 +64,5 @@ public class Photostat.Layouts.MainWindow : Gtk.Grid {
         child_pane.pack2 (right_sidebar, false, false);
 
         attach (main_pane, 0, 0, 1, 1);
->>>>>>> master
     }
 }

@@ -39,12 +39,6 @@ public class Photostat.Layouts.MainWindow : Gtk.Grid {
     }
 
     construct {
-<<<<<<< HEAD
-        // Add sidebars and main canvas here
-        var welcome_view = new Photostat.Widgets.WelcomeView (window);
-
-        add (welcome_view);
-=======
         right_sidebar = new Layouts.RightSideBar (window);
         properties_bar = new Layouts.PropertiesBar (window);
         main_canvas = new Layouts.MainCanvas (window);

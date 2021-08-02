@@ -31,7 +31,9 @@ public class Photostat.Layouts.MainCanvas : Gtk.Grid {
     }
 
     construct {
-        attach (new Gtk.Label ("This is the main canvas"), 0, 0, 1, 1);
+        var welcome_view = new Photostat.Widgets.WelcomeView (window);
+
+        add (welcome_view);
         show_all ();
     }
 }

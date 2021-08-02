@@ -15,12 +15,8 @@ executable (
     'Widgets/HeaderBarButton.vala',
     'Widgets/ButtonImage.vala',
     'Widgets/MenuButton.vala',
-<<<<<<< HEAD
     'Widgets/WelcomeView.vala',
     'Widgets/TemplateRow.vala',
-=======
-
->>>>>>> master
     'Layouts/HeaderBar.vala',
     'Layouts/MainWindow.vala',
     'Layouts/PropertiesBar.vala',

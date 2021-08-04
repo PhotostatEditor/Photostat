@@ -150,12 +150,10 @@
         };
         choose_template_grid.add (choose_template_label);
 
-        var show_advanced_button = new Gtk.Button.with_label ("Show Advanced");
+        var next_btn = new Gtk.Button.with_label (_("Next"));
+        next_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-        var create_btn = new Gtk.Button.with_label ("Create");
-        create_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-
-        cancel_btn = new Gtk.Button.with_label ("Cancel");
+        cancel_btn = new Gtk.Button.with_label (_("Cancel"));
 
         cancel_btn.clicked.connect (() => {
             destroy ();
@@ -165,32 +163,32 @@
             _window.accept_focus = true;
         });
 
-        var width_label = new Gtk.Label ("Width: ") {
+        var name_label = new Gtk.Label (_("Name:")) {
             halign = Gtk.Align.END
+        };
+        var name_entry = new Gtk.Entry ();
+
+        var unit_label = new Gtk.Label (_("Units:")) {
+            halign = Gtk.Align.END
+        };
+        var unit_combobox = new Gtk.ComboBox ();
+
+        var width_label = new Gtk.Label (_("Width:")) {
+            halign = Gtk.Align.END,
+            margin_start = 32
         };
         var width_entry = new Gtk.SpinButton.with_range (1, 99999, 1);
 
-        var height_label = new Gtk.Label ("Height: ") {
-            halign = Gtk.Align.END
+        var height_label = new Gtk.Label (_("Height:")) {
+            halign = Gtk.Align.END,
+            margin_start = 32
         };
         var height_entry = new Gtk.SpinButton.with_range (1, 99999, 1);
-
-        var dpi_label = new Gtk.Label ("DPI: ") {
-            halign = Gtk.Align.END,
-            margin_start = 32
-        };
-        var dpi_combobox = new Gtk.ComboBox ();
-
-        var unit_label = new Gtk.Label ("Units: ") {
-            halign = Gtk.Align.END,
-            margin_start = 32
-        };
-        var unit_combobox = new Gtk.ComboBox ();
 
         var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
         size_group.add_widget (width_entry);
         size_group.add_widget (height_entry);
-        size_group.add_widget (dpi_combobox);
+        size_group.add_widget (name_entry);
         size_group.add_widget (unit_combobox);
 
         var options_grid = new Gtk.Grid () {
@@ -200,29 +198,26 @@
             margin = 24
         };
 
-        options_grid.attach (width_label, 0, 0, 1, 1);
-        options_grid.attach (width_entry, 1, 0, 1, 1);
-        options_grid.attach (height_label, 0, 1, 1, 1);
-        options_grid.attach (height_entry, 1, 1, 1, 1);
-        options_grid.attach (dpi_label, 2, 0, 1, 1);
-        options_grid.attach (dpi_combobox, 3, 0, 1, 1);
-        options_grid.attach (unit_label, 2, 1, 1, 1);
-        options_grid.attach (unit_combobox, 3, 1, 1, 1);
+        options_grid.attach (name_label, 0, 0, 1, 1);
+        options_grid.attach (name_entry, 1, 0, 1, 1);
+        options_grid.attach (unit_label, 0, 1, 1, 1);
+        options_grid.attach (unit_combobox, 1, 1, 1, 1);
+        options_grid.attach (width_label, 2, 0, 1, 1);
+        options_grid.attach (width_entry, 3, 0, 1, 1);
+        options_grid.attach (height_label, 2, 1, 1, 1);
+        options_grid.attach (height_entry, 3, 1, 1, 1);
 
         var button_grid = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
             hexpand = true,
             layout_style = Gtk.ButtonBoxStyle.END,
             spacing = 6,
         };
-        button_grid.add (show_advanced_button);
         button_grid.add (cancel_btn);
-        button_grid.add (create_btn);
-        button_grid.set_child_secondary (show_advanced_button, true);
+        button_grid.add (next_btn);
 
         var button_size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-        button_size_group.add_widget (show_advanced_button);
         button_size_group.add_widget (cancel_btn);
-        button_size_group.add_widget (create_btn);
+        button_size_group.add_widget (next_btn);
 
         var setup_grid = new Gtk.Grid () {
             margin = 12,
@@ -247,6 +242,170 @@
         paned.pack1 (sidebar_grid, false, false);
         paned.pack2 (individual_grid, true, false);
 
-        add (paned);
+        var layout_header = new Granite.HeaderLabel ("Layout");
+
+        var document_name_label = new Gtk.Label ("Document Name:") {
+            halign = Gtk.Align.END
+        };
+        var document_name_entry = new Gtk.Entry ();
+
+        var document_units_label = new Gtk.Label ("Document Units:") {
+            halign = Gtk.Align.END
+        };
+        var document_units_combobox = new Gtk.ComboBox ();
+
+        var page_width_label = new Gtk.Label ("Page Width:") {
+            halign = Gtk.Align.END
+        };
+        var page_width_entry = new Gtk.SpinButton.with_range (0, 99999, 1);
+
+        var page_height_label = new Gtk.Label ("Page Height:") {
+            halign = Gtk.Align.END
+        };
+        var page_height_entry = new Gtk.SpinButton.with_range (0, 99999, 1);
+
+        var dpi_label = new Gtk.Label ("DPI:") {
+            halign = Gtk.Align.END,
+            margin_start = 32
+        };
+        var dpi_combobox = new Gtk.ComboBox ();
+
+        var orientation_label = new Gtk.Label (_("Orientation:")) {
+            halign = Gtk.Align.END
+        };
+
+        var orientation_modebutton = new Granite.Widgets.ModeButton ();
+        orientation_modebutton.append_text (_("Landscape"));
+        orientation_modebutton.append_text (_("Portrait"));
+
+        var color_header = new Granite.HeaderLabel ("Color");
+
+        var color_format_label = new Gtk.Label (_("Color Format:")) {
+            halign = Gtk.Align.END
+        };
+        var color_format_combobox = new Gtk.ComboBox ();
+
+        var color_profile_label = new Gtk.Label (_("Color Format:")) {
+            halign = Gtk.Align.END
+        };
+        var color_profile_combobox = new Gtk.ComboBox ();
+
+        var transperant_label = new Gtk.Label (_("Transperant Background:")) {
+            halign = Gtk.Align.END
+        };
+
+        var transperant_switch = new Gtk.Switch () {
+            halign = Gtk.Align.START
+        };
+
+        var margin_header = new Granite.HeaderLabel (_("Margins"));
+
+        var include_margin = new Gtk.Label (_("Include Margins:")) {
+            halign = Gtk.Align.END
+        };
+
+        var margin_switch = new Gtk.Switch () {
+            halign = Gtk.Align.START
+        };
+
+        var left_margin = new Gtk.Label (_("Left:")) {
+            halign = Gtk.Align.END
+        };
+        var left_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1);
+
+        var right_margin = new Gtk.Label (_("Right:")) {
+            halign = Gtk.Align.END
+        };
+        var right_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1);
+
+        var top_margin = new Gtk.Label (_("Top:")) {
+            halign = Gtk.Align.END
+        };
+        var top_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1);
+
+        var bottom_margin = new Gtk.Label (_("Botom:")) {
+            halign = Gtk.Align.END
+        };
+        var bottom_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1);
+
+        var back_btn = new Gtk.Button.with_label (_("Back"));
+
+        var create_btn = new Gtk.Button.with_label (_("Create"));
+        create_btn.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+
+        var advanced_button_grid = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
+            hexpand = true,
+            layout_style = Gtk.ButtonBoxStyle.END,
+            spacing = 6,
+            margin_end = 18
+        };
+        advanced_button_grid.add (back_btn);
+        advanced_button_grid.add (create_btn);
+
+        var advanced_button_size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+        advanced_button_size_group.add_widget (back_btn);
+        advanced_button_size_group.add_widget (create_btn);
+
+        var advanced_grid = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 6,
+            margin_top = 24,
+            margin_bottom = 42,
+            halign = Gtk.Align.CENTER
+        };
+        advanced_grid.attach (layout_header, 0, 0, 2);
+        advanced_grid.attach (document_name_label, 0, 1, 2);
+        advanced_grid.attach (document_name_entry, 2, 1, 2);
+        advanced_grid.attach (page_width_label, 0, 2, 2);
+        advanced_grid.attach (page_width_entry, 2, 2, 2);
+        advanced_grid.attach (page_height_label, 0, 3, 2);
+        advanced_grid.attach (page_height_entry, 2, 3, 2);
+        advanced_grid.attach (dpi_label, 0, 4, 2);
+        advanced_grid.attach (dpi_combobox, 2, 4, 2);
+        advanced_grid.attach (document_units_label, 0, 5, 2);
+        advanced_grid.attach (document_units_combobox, 2, 5, 2);
+        advanced_grid.attach (orientation_label, 0, 6, 2);
+        advanced_grid.attach (orientation_modebutton, 2, 6, 2);
+        advanced_grid.attach (color_header, 0, 7, 2);
+        advanced_grid.attach (color_profile_label, 0, 8, 2);
+        advanced_grid.attach (color_profile_combobox, 2, 8, 2);
+        advanced_grid.attach (color_format_label, 0, 9, 2);
+        advanced_grid.attach (color_format_combobox, 2, 9, 2);
+        advanced_grid.attach (transperant_label, 0, 10, 2);
+        advanced_grid.attach (transperant_switch, 2, 10, 2);
+        advanced_grid.attach (margin_header, 0, 11, 2);
+        advanced_grid.attach (include_margin, 0, 12, 2);
+        advanced_grid.attach (margin_switch, 2, 12, 2);
+        advanced_grid.attach (left_margin, 0, 13);
+        advanced_grid.attach (left_margin_entry, 1, 13);
+        advanced_grid.attach (right_margin, 2, 13);
+        advanced_grid.attach (right_margin_entry, 3, 13);
+        advanced_grid.attach (top_margin, 0, 14);
+        advanced_grid.attach (top_margin_entry, 1, 14);
+        advanced_grid.attach (bottom_margin, 2, 14);
+        advanced_grid.attach (bottom_margin_entry, 3, 14);
+
+        var advanced_box = new Gtk.Grid () {
+            row_spacing = 12
+        };
+        advanced_box.attach (advanced_grid, 0, 0);
+        advanced_box.attach (advanced_button_grid, 0, 1);
+
+        var deck = new Hdy.Deck () {
+            can_swipe_back = true,
+            expand = true
+        };
+        deck.add (paned);
+        deck.add (advanced_box);
+
+        add (deck);
+
+        next_btn.clicked.connect (() => {
+            deck.visible_child = advanced_box;
+        });
+
+        back_btn.clicked.connect (() => {
+            deck.visible_child = paned;
+        });
     }
 }

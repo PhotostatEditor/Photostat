@@ -17,6 +17,7 @@ executable (
     'Widgets/MenuButton.vala',
     'Widgets/WelcomeView.vala',
     'Widgets/TemplateRow.vala',
+
     'Layouts/HeaderBar.vala',
     'Layouts/MainWindow.vala',
     'Layouts/PropertiesBar.vala',

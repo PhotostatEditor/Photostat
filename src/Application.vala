@@ -25,26 +25,52 @@ namespace Photostat {
 }
 
 public class Photostat.Application : Gtk.Application {
-    public GLib.List<Window> windows;
+    public GLib.List<Window> window;
+
+    private static bool create_new_window = false;
+
+    const OptionEntry[] ENTRIES = {
+        { "new-window", 'n', 0, OptionArg.NONE, null, ("New Window"), null },
+        { null }
+    };
 
     construct {
+        flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
+
         application_id = "com.github.photostat_editor.photostat";
 
-        flags = ApplicationFlags.FLAGS_NONE;
+        add_main_option_entries (ENTRIES);
 
         settings = new Photostat.Services.Settings ("com.github.photostat_editor.photostat");
-        windows = new GLib.List<Window> ();
+        window = new GLib.List<Window> ();
     }
 
-    public void new_window () {
-        new Photostat.Window (this).present ();
+    public override int command_line (GLib.ApplicationCommandLine command_line) {
+        var options = command_line.get_options_dict ();
+
+        if (options.contains ("new-window")) {
+            create_new_window = true;
+        }
+
+        activate ();
+
+        return Posix.EXIT_SUCCESS;
     }
 
     public override void activate () {
         init_theme ();
 
-        var window = new Photostat.Window (this);
-        add_window (window);
+        var window = get_last_window ();
+
+        if (window != null && create_new_window) {
+            create_new_window = false;
+            new_window ();
+        } else if (window == null) {
+            window = new_window ();
+            window.show ();
+        } else {
+            window.present ();
+        }
 
         var quit_action = new SimpleAction ("quit", null);
 
@@ -60,13 +86,23 @@ public class Photostat.Application : Gtk.Application {
     }
 
     private void init_theme () {
-        if (windows.length () > 0) {
+
+        if (window.length () > 0) {
             return;
         }
 
         Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
         Gtk.Settings.get_default ().set_property ("gtk-icon-theme-name", "elementary");
         Gtk.Settings.get_default ().set_property ("gtk-theme-name", "io.elementary.stylesheet.blueberry");
+    }
+
+    public Photostat.Window? get_last_window () {
+        unowned List<Gtk.Window> windows = get_windows ();
+        return windows.length () > 0 ? windows.last ().data as Window : null;
+    }
+
+    public Photostat.Window new_window () {
+        return new Window (this);
     }
 }
 

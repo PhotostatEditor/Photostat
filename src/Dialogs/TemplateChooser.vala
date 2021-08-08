@@ -171,7 +171,15 @@
         var unit_label = new Gtk.Label (_("Units:")) {
             halign = Gtk.Align.END
         };
-        var unit_combobox = new Gtk.ComboBox ();
+
+        var unit_combobox = new Gtk.ComboBoxText ();
+        unit_combobox.append_text ("px");
+        unit_combobox.append_text ("pt");
+        unit_combobox.append_text ("pc");
+        unit_combobox.append_text ("mm");
+        unit_combobox.append_text ("cm");
+        unit_combobox.append_text ("in");
+        unit_combobox.active = 0;
 
         var width_label = new Gtk.Label (_("Width:")) {
             halign = Gtk.Align.END,
@@ -235,7 +243,6 @@
         individual_grid.attach (choose_template_grid, 0, 0);
         individual_grid.attach (new Gtk.Separator (Gtk.Orientation.HORIZONTAL), 0, 1);
         individual_grid.attach (template_view, 0, 2);
-        // individual_grid.attach (new Gtk.Separator (Gtk.Orientation.HORIZONTAL), 0, 3);
         individual_grid.attach (actionbar, 0, 3);
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
@@ -252,23 +259,38 @@
         var document_units_label = new Gtk.Label ("Document Units:") {
             halign = Gtk.Align.END
         };
-        var document_units_combobox = new Gtk.ComboBox ();
+        var document_units_combobox = new Gtk.ComboBoxText ();
+        document_units_combobox.append_text ("px");
+        document_units_combobox.append_text ("pt");
+        document_units_combobox.append_text ("pc");
+        document_units_combobox.append_text ("mm");
+        document_units_combobox.append_text ("cm");
+        document_units_combobox.append_text ("in");
+        document_units_combobox.active = 0;
 
         var page_width_label = new Gtk.Label ("Page Width:") {
             halign = Gtk.Align.END
         };
-        var page_width_entry = new Gtk.SpinButton.with_range (0, 99999, 1);
+        var page_width_entry = new Gtk.SpinButton.with_range (1, 99999, 1);
 
         var page_height_label = new Gtk.Label ("Page Height:") {
             halign = Gtk.Align.END
         };
-        var page_height_entry = new Gtk.SpinButton.with_range (0, 99999, 1);
+        var page_height_entry = new Gtk.SpinButton.with_range (1, 99999, 1);
 
         var dpi_label = new Gtk.Label ("DPI:") {
             halign = Gtk.Align.END,
             margin_start = 32
         };
-        var dpi_combobox = new Gtk.ComboBox ();
+
+        var dpi_combobox = new Gtk.ComboBoxText.with_entry ();
+        dpi_combobox.append_text ("72");
+        dpi_combobox.append_text ("300");
+        dpi_combobox.append_text ("400");
+        dpi_combobox.append_text ("600");
+        dpi_combobox.append_text ("1000");
+        dpi_combobox.append_text ("1200");
+        dpi_combobox.active = 0;
 
         var orientation_label = new Gtk.Label (_("Orientation:")) {
             halign = Gtk.Align.END

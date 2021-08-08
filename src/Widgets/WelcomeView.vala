@@ -25,14 +25,14 @@ public class Photostat.Widgets.WelcomeView : Granite.Widgets.Welcome {
     public WelcomeView (Photostat.Window window) {
         Object (
             window: window,
-            title: ("Import Some Photos"),
-            subtitle: ("Open a photo to begin editing")
+            title: _("Import Some Photos"),
+            subtitle: _("Open a photo to begin editing")
         );
     }
 
     construct {
-        append ("document-new", ("New Document"), ("Create a new empty document"));
-        append ("document-open", ("Open Image"), ("Open a saved image"));
+        append ("document-new", _("New Document"), _("Create a new empty document"));
+        append ("document-open", _("Open Image"), _("Open a saved image"));
 
         activated.connect ((i) => {
             if (i == 0) {

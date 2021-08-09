@@ -173,12 +173,12 @@
         };
 
         var unit_combobox = new Gtk.ComboBoxText ();
-        unit_combobox.append_text ("px");
-        unit_combobox.append_text ("pt");
-        unit_combobox.append_text ("pc");
-        unit_combobox.append_text ("mm");
-        unit_combobox.append_text ("cm");
-        unit_combobox.append_text ("in");
+        unit_combobox.append_text ("Pixels (px)");
+        unit_combobox.append_text ("Points (pt)");
+        unit_combobox.append_text ("Pica (pc)");
+        unit_combobox.append_text ("Millimetres (mm)");
+        unit_combobox.append_text ("Centimetres (cm)");
+        unit_combobox.append_text ("Inches (in)");
         unit_combobox.active = 0;
 
         var width_label = new Gtk.Label (_("Width:")) {
@@ -260,12 +260,12 @@
             halign = Gtk.Align.END
         };
         var document_units_combobox = new Gtk.ComboBoxText ();
-        document_units_combobox.append_text ("px");
-        document_units_combobox.append_text ("pt");
-        document_units_combobox.append_text ("pc");
-        document_units_combobox.append_text ("mm");
-        document_units_combobox.append_text ("cm");
-        document_units_combobox.append_text ("in");
+        document_units_combobox.append_text ("Pixels (px)");
+        document_units_combobox.append_text ("Points (pt)");
+        document_units_combobox.append_text ("Pica (pc)");
+        document_units_combobox.append_text ("Millimetres (mm)");
+        document_units_combobox.append_text ("Centimetres (cm)");
+        document_units_combobox.append_text ("Inches (in)");
         document_units_combobox.active = 0;
 
         var page_width_label = new Gtk.Label ("Page Width:") {
@@ -279,8 +279,7 @@
         var page_height_entry = new Gtk.SpinButton.with_range (1, 99999, 1);
 
         var dpi_label = new Gtk.Label ("DPI:") {
-            halign = Gtk.Align.END,
-            margin_start = 32
+            halign = Gtk.Align.END
         };
 
         var dpi_combobox = new Gtk.ComboBoxText.with_entry ();
@@ -291,6 +290,10 @@
         dpi_combobox.append_text ("1000");
         dpi_combobox.append_text ("1200");
         dpi_combobox.active = 0;
+
+        var dc_size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+        dc_size_group.add_widget (dpi_combobox);
+        dc_size_group.add_widget (document_units_combobox);
 
         var orientation_label = new Gtk.Label (_("Orientation:")) {
             halign = Gtk.Align.END
@@ -305,12 +308,25 @@
         var color_format_label = new Gtk.Label (_("Color Format:")) {
             halign = Gtk.Align.END
         };
-        var color_format_combobox = new Gtk.ComboBox ();
+        var color_format_combobox = new Gtk.ComboBoxText ();
+        color_format_combobox.append_text (("RGB/8"));
+        color_format_combobox.append_text (("RGB/16"));
+        color_format_combobox.append_text (("RGB/32"));
+        color_format_combobox.append_text (("Grey/8"));
+        color_format_combobox.append_text (("Grey/16"));
+        color_format_combobox.append_text (("CMYK/8"));
+        color_format_combobox.append_text (("LAB/16"));
+        color_format_combobox.active = 0;
 
-        var color_profile_label = new Gtk.Label (_("Color Format:")) {
+        var color_profile_label = new Gtk.Label (_("Color Profile:")) {
             halign = Gtk.Align.END
         };
-        var color_profile_combobox = new Gtk.ComboBox ();
+        var color_profile_combobox = new Gtk.ComboBoxText ();
+        color_profile_combobox.append_text ("sRGB");
+        color_profile_combobox.append_text ("Adobe RGB (1998)");
+        color_profile_combobox.append_text ("Apple RGB");
+        color_profile_combobox.append_text ("ColorMatch RGB");
+        color_profile_combobox.active = 0;
 
         var transperant_label = new Gtk.Label (_("Transperant Background:")) {
             halign = Gtk.Align.END
@@ -333,22 +349,30 @@
         var left_margin = new Gtk.Label (_("Left:")) {
             halign = Gtk.Align.END
         };
-        var left_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1);
+        var left_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1) {
+            sensitive = false
+        };
 
         var right_margin = new Gtk.Label (_("Right:")) {
             halign = Gtk.Align.END
         };
-        var right_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1);
+        var right_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1) {
+            sensitive = false
+        };
 
         var top_margin = new Gtk.Label (_("Top:")) {
             halign = Gtk.Align.END
         };
-        var top_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1);
+        var top_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1) {
+            sensitive = false
+        };
 
         var bottom_margin = new Gtk.Label (_("Botom:")) {
             halign = Gtk.Align.END
         };
-        var bottom_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1);
+        var bottom_margin_entry = new Gtk.SpinButton.with_range (0, 9999, 1) {
+            sensitive = false
+        };
 
         var back_btn = new Gtk.Button.with_label (_("Back"));
 
@@ -370,9 +394,9 @@
 
         var advanced_grid = new Gtk.Grid () {
             column_spacing = 12,
-            row_spacing = 6,
-            margin_top = 24,
-            margin_bottom = 42,
+            row_spacing = 12,
+            margin_top = 16,
+            margin_bottom = 12,
             halign = Gtk.Align.CENTER
         };
         advanced_grid.attach (layout_header, 0, 0, 2);
@@ -382,34 +406,32 @@
         advanced_grid.attach (page_width_entry, 2, 2, 2);
         advanced_grid.attach (page_height_label, 0, 3, 2);
         advanced_grid.attach (page_height_entry, 2, 3, 2);
-        advanced_grid.attach (dpi_label, 0, 4, 2);
-        advanced_grid.attach (dpi_combobox, 2, 4, 2);
-        advanced_grid.attach (document_units_label, 0, 5, 2);
-        advanced_grid.attach (document_units_combobox, 2, 5, 2);
-        advanced_grid.attach (orientation_label, 0, 6, 2);
-        advanced_grid.attach (orientation_modebutton, 2, 6, 2);
-        advanced_grid.attach (color_header, 0, 7, 2);
+        advanced_grid.attach (orientation_label, 0, 4, 2);
+        advanced_grid.attach (orientation_modebutton, 2, 4, 2);
+        advanced_grid.attach (document_units_label, 0, 5);
+        advanced_grid.attach (document_units_combobox, 1, 5);
+        advanced_grid.attach (dpi_label, 2, 5);
+        advanced_grid.attach (dpi_combobox, 3, 5);
+        advanced_grid.attach (color_header, 0, 6, 2);
+        advanced_grid.attach (color_format_label, 0, 7, 2);
+        advanced_grid.attach (color_format_combobox, 2, 7, 2);
         advanced_grid.attach (color_profile_label, 0, 8, 2);
         advanced_grid.attach (color_profile_combobox, 2, 8, 2);
-        advanced_grid.attach (color_format_label, 0, 9, 2);
-        advanced_grid.attach (color_format_combobox, 2, 9, 2);
-        advanced_grid.attach (transperant_label, 0, 10, 2);
-        advanced_grid.attach (transperant_switch, 2, 10, 2);
-        advanced_grid.attach (margin_header, 0, 11, 2);
-        advanced_grid.attach (include_margin, 0, 12, 2);
-        advanced_grid.attach (margin_switch, 2, 12, 2);
-        advanced_grid.attach (left_margin, 0, 13);
-        advanced_grid.attach (left_margin_entry, 1, 13);
-        advanced_grid.attach (right_margin, 2, 13);
-        advanced_grid.attach (right_margin_entry, 3, 13);
-        advanced_grid.attach (top_margin, 0, 14);
-        advanced_grid.attach (top_margin_entry, 1, 14);
-        advanced_grid.attach (bottom_margin, 2, 14);
-        advanced_grid.attach (bottom_margin_entry, 3, 14);
+        advanced_grid.attach (transperant_label, 0, 9, 2);
+        advanced_grid.attach (transperant_switch, 2, 9, 2);
+        advanced_grid.attach (margin_header, 0, 10, 2);
+        advanced_grid.attach (include_margin, 0, 11, 2);
+        advanced_grid.attach (margin_switch, 2, 11, 2);
+        advanced_grid.attach (left_margin, 0, 12);
+        advanced_grid.attach (left_margin_entry, 1, 12);
+        advanced_grid.attach (right_margin, 2, 12);
+        advanced_grid.attach (right_margin_entry, 3, 12);
+        advanced_grid.attach (top_margin, 0, 13);
+        advanced_grid.attach (top_margin_entry, 1, 13);
+        advanced_grid.attach (bottom_margin, 2, 13);
+        advanced_grid.attach (bottom_margin_entry, 3, 13);
 
-        var advanced_box = new Gtk.Grid () {
-            row_spacing = 12
-        };
+        var advanced_box = new Gtk.Grid ();
         advanced_box.attach (advanced_grid, 0, 0);
         advanced_box.attach (advanced_button_grid, 0, 1);
 
@@ -428,6 +450,20 @@
 
         back_btn.clicked.connect (() => {
             deck.visible_child = paned;
+        });
+
+        margin_switch.notify["active"].connect (() => {
+            if (margin_switch.active) {
+                top_margin_entry.sensitive = true;
+                bottom_margin_entry.sensitive = true;
+                left_margin_entry.sensitive = true;
+                right_margin_entry.sensitive = true;
+            } else {
+                top_margin_entry.sensitive = false;
+                bottom_margin_entry.sensitive = false;
+                right_margin_entry.sensitive = false;
+                left_margin_entry.sensitive = false;
+            }
         });
     }
 }

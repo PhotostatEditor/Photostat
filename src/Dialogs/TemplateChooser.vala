@@ -442,7 +442,10 @@
         deck.add (paned);
         deck.add (advanced_box);
 
-        add (deck);
+        var handle = new Hdy.WindowHandle ();
+        handle.add (deck);
+
+        add (handle);
 
         next_btn.clicked.connect (() => {
             deck.visible_child = advanced_box;

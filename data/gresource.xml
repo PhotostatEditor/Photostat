@@ -2,5 +2,13 @@
 <gresources>
   <gresource prefix="/com/github/photostat_editor/photostat">
     <file alias="styles.css">styles.css</file>
+    <file alias="paper-a0.svg">icons/hicolor/paper_a0.svg</file>
+    <file alias="paper-a1.svg">icons/hicolor/paper_a1.svg</file>
+    <file alias="paper-a2.svg">icons/hicolor/paper_a2.svg</file>
+    <file alias="paper-a3.svg">icons/hicolor/paper_a3.svg</file>
+    <file alias="paper-a4.svg">icons/hicolor/paper_a4.svg</file>
+    <file alias="paper-a5.svg">icons/hicolor/paper_a5.svg</file>
+    <file alias="paper-a6.svg">icons/hicolor/paper_a6.svg</file>
+    <file alias="paper-a7.svg">icons/hicolor/paper_a7.svg</file>
   </gresource>
 </gresources>

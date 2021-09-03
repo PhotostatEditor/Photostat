@@ -61,7 +61,7 @@ public class Photostat.Application : Gtk.Application {
 
     private void init_theme () {
 
-        if (window.length () > 0) {
+        if (windows.length () > 0) {
             return;
         }
 

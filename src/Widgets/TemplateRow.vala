@@ -26,12 +26,14 @@ public class Photostat.Widgets.TemplateRow : Gtk.ListBoxRow {
     public TemplateRow (string name, string icon_name) {
 
         row_label = new Gtk.Label (name) {
-            margin_start = 4,
+            margin_start = 5,
             halign = Gtk.Align.START,
             hexpand = true,
             ellipsize = Pango.EllipsizeMode.END
         };
-        row_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.MENU);
+        row_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.MENU) {
+            margin_start = 5
+        };
 
         var grid = new Gtk.Grid ();
         grid.attach (row_icon, 0, 0);

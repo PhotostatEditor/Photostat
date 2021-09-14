@@ -87,13 +87,17 @@ public class Photostat.Application : Gtk.Application {
 
     private void init_theme () {
 
-        if (window.length () > 0) {
+        if (windows.length () > 0) {
             return;
         }
 
         Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
         Gtk.Settings.get_default ().set_property ("gtk-icon-theme-name", "elementary");
-        Gtk.Settings.get_default ().set_property ("gtk-theme-name", "io.elementary.stylesheet.blueberry");
+        GLib.Value value = GLib.Value (GLib.Type.STRING);
+        Gtk.Settings.get_default ().get_property ("gtk-theme-name", ref value);
+        if (!value.get_string ().has_prefix ("io.elementary.stylesheet")) {
+            Gtk.Settings.get_default ().set_property ("gtk-theme-name", "io.elementary.stylesheet.blueberry");
+        }
     }
 
     public Photostat.Window? get_last_window () {

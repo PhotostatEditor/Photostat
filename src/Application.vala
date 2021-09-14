@@ -25,7 +25,7 @@ namespace Photostat {
 }
 
 public class Photostat.Application : Gtk.Application {
-    public GLib.List<Window> window;
+    public GLib.List<Window> windows;
 
     private static bool create_new_window = false;
 
@@ -42,7 +42,7 @@ public class Photostat.Application : Gtk.Application {
         add_main_option_entries (ENTRIES);
 
         settings = new Photostat.Services.Settings ("com.github.photostat_editor.photostat");
-        window = new GLib.List<Window> ();
+        windows = new GLib.List<Window> ();
     }
 
     public override int command_line (GLib.ApplicationCommandLine command_line) {

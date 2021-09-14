@@ -94,7 +94,7 @@ public class Photostat.Application : Gtk.Application {
         var gtk_settings = Gtk.Settings.get_default ();
         gtk_settings.gtk_application_prefer_dark_theme = true;
         gtk_settings.set_property ("gtk-icon-theme-name", "elementary");
-        
+
         weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
         default_theme.add_resource_path ("/com/github/photostat_editor/photostat");
         GLib.Value value = GLib.Value (GLib.Type.STRING);

@@ -17,5 +17,22 @@
     <file alias="photo_8x10.svg">icons/hicolor/photo_8x10.svg</file>
     <file alias="photo_12x18.svg">icons/hicolor/photo_12x18.svg</file>
     <file alias="photo_24x36.svg">icons/hicolor/photo_24x36.svg</file>
+    <file alias="instagram_landscape.svg">icons/hicolor/instagram_landscape.svg</file>
+    <file alias="instagram_portrait.svg">icons/hicolor/instagram_portrait.svg</file>
+    <file alias="instagram_profile photo.svg">icons/hicolor/instagram_profile photo.svg</file>
+    <file alias="instagram_square.svg">icons/hicolor/instagram_square.svg</file>
+    <file alias="instagram_stories.svg">icons/hicolor/instagram_stories.svg</file>
+    <file alias="facebook_cover photo.svg">icons/hicolor/facebook_cover photo.svg</file>
+    <file alias="facebook_landscape.svg">icons/hicolor/facebook_landscape.svg</file>
+    <file alias="facebook_portrait.svg">icons/hicolor/facebook_portrait.svg</file>
+    <file alias="facebook_profile photo.svg">icons/hicolor/facebook_profile photo.svg</file>
+    <file alias="facebook_square.svg">icons/hicolor/facebook_square.svg</file>
+    <file alias="facebook_stories.svg">icons/hicolor/facebook_stories.svg</file>
+    <file alias="facebook_cover_photo.svg">icons/hicolor/facebook_cover_photo.svg</file>
+    <file alias="facebook_landscape.svg">icons/hicolor/facebook_landscape.svg</file>
+    <file alias="facebook_portrait.svg">icons/hicolor/facebook_portrait.svg</file>
+    <file alias="facebook_profile_photo.svg">icons/hicolor/facebook_profile_photo.svg</file>
+    <file alias="facebook_square.svg">icons/hicolor/facebook_square.svg</file>
+    <file alias="facebook_stories.svg">icons/hicolor/facebook_stories.svg</file>
   </gresource>
 </gresources>

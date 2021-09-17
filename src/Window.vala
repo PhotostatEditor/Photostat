@@ -41,14 +41,6 @@ public class Photostat.Window : Hdy.ApplicationWindow {
     }
 
     construct {
-        var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/com/github/photostat_editor/photostat/styles.css");
-        Gtk.StyleContext.add_provider_for_screen (
-            Gdk.Screen.get_default (),
-            provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        );
-
         event_bus = new Photostat.Services.EventBus ();
         action_manager = new Photostat.Services.ActionManager (app, this);
         headerbar = new Photostat.Layouts.HeaderBar (this);

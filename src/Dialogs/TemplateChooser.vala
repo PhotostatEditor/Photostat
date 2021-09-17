@@ -19,44 +19,44 @@
  * Authored by: Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
  */
 
- public class Photostat.Dialogs.TemplateChooser : Hdy.Window {
-     public weak Photostat.Window window { get; construct; }
+public class Photostat.Dialogs.TemplateChooser : Hdy.Window {
+    public weak Photostat.Window window { get; construct; }
 
-     private Widgets.TemplateRow recent_row;
-     private Widgets.TemplateRow default_row;
-     private Widgets.TemplateRow paper_row;
-     private Widgets.TemplateRow photo_row;
-     private Widgets.TemplateRow web_row;
-     private Widgets.TemplateRow social_row;
-     private Widgets.TemplateRow film_video_row;
-     private Widgets.TemplateRow iconography_row;
-     private Widgets.TemplateRow devices_row;
+    private Widgets.TemplateRow recent_row;
+    private Widgets.TemplateRow default_row;
+    private Widgets.TemplateRow paper_row;
+    private Widgets.TemplateRow photo_row;
+    private Widgets.TemplateRow web_row;
+    private Widgets.TemplateRow social_row;
+    private Widgets.TemplateRow film_video_row;
+    private Widgets.TemplateRow iconography_row;
+    private Widgets.TemplateRow devices_row;
 
-     public Gtk.Button cancel_btn;
+    public Gtk.Button cancel_btn;
 
-     public TemplateChooser (Photostat.Window _window) {
-         Object (
-             window: _window,
-             resizable: false,
-             deletable: true,
-             width_request: 1000,
-             height_request: 700,
-             window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
-             modal: true,
-             transient_for: _window,
-             type_hint: Gdk.WindowTypeHint.DIALOG
-         );
-     }
+    public TemplateChooser (Photostat.Window _window) {
+        Object (
+            window: _window,
+            resizable: false,
+            deletable: true,
+            width_request: 1000,
+            height_request: 700,
+            window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
+            modal: true,
+            transient_for: _window,
+            type_hint: Gdk.WindowTypeHint.DIALOG
+        );
+    }
 
-     static construct {
-         Hdy.init ();
-     }
+    static construct {
+        Hdy.init ();
+    }
 
-     construct {
-         var sidebar_header = new Hdy.HeaderBar () {
-             has_subtitle = false,
-             show_close_button = false
-         };
+    construct {
+        var sidebar_header = new Hdy.HeaderBar () {
+            has_subtitle = false,
+            show_close_button = false
+        };
          sidebar_header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
          sidebar_header.get_style_context ().add_class ("default-decoration");
 

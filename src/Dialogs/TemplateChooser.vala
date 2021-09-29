@@ -125,12 +125,73 @@ public class Photostat.Dialogs.TemplateChooser : Hdy.Window {
         // placeholder.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
         // placeholder.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
+        // var test_icon1 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("2k-1.66_1"),
+        //     pixel_size = 128
+        // };
+
+        // var test_icon2 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("2k-4_3"),
+        //     pixel_size = 128
+        // };
+
+        // var test_icon3 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("2k-1.85_1"),
+        //     pixel_size = 128
+        // };
+
+        // var test_icon4 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("1080p-4_3"),
+        //     pixel_size = 128
+        // };
+
+        // var test_icon5 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("1080p-16_9"),
+        //     pixel_size = 128
+        // };
+
+        // var test_icon6 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("1440p-4_3"),
+        //     pixel_size = 128
+        // };
+
+        // var test_icon7 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("facebook-landscape"),
+        //     pixel_size = 128
+        // };
+
+        // var test_icon8 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("twitter-cover-photo"),
+        //     pixel_size = 128
+        // };
+
+        // var test_icon9 = new Gtk.Image () {
+        //     gicon = new ThemedIcon ("twitter-header-photo"),
+        //     pixel_size = 128
+        // };
+
         var template_view = new Gtk.FlowBox () {
             activate_on_single_click = true,
             homogeneous = true,
             selection_mode = Gtk.SelectionMode.SINGLE
         };
         template_view.get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
+
+        // template_view.add (test_icon1);
+        // template_view.add (test_icon2);
+        // template_view.add (test_icon3);
+        // template_view.add (test_icon4);
+        // template_view.add (test_icon5);
+        // template_view.add (test_icon6);
+        // template_view.add (test_icon7);
+        // template_view.add (test_icon8);
+        // template_view.add (test_icon9);
+
+        var template_button = new Photostat.Widgets.TemplateButton ("facebook-landscape");
+        var template_button2 = new Photostat.Widgets.TemplateButton ("twitter-cover-photo");
+
+        template_view.add (template_button);
+        template_view.add (template_button2);
 
         var template_scrolled_window = new Gtk.ScrolledWindow (null, null) {
             hscrollbar_policy = Gtk.PolicyType.NEVER,

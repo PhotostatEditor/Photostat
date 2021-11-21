@@ -13,30 +13,7 @@ Photostat is a native image editor designed to provide an easy to use and modern
 
 ## :hammer_and_wrench: Compile
 
-### Dependencies Required
-
-- `libgtk-3-dev`
-- `libgranite-dev`
-- `libhandy-1-dev`
-- `meson`
-- `valac`
-- if you are on elementary OS 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)
-
-  > Note: for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
-
-### Compile and Run
-
-Once the above mentioned dependencies are resolved, Photostat can be compiled and installed.
-
-```sh
-meson build --prefix=/usr
-cd build
-sudo ninja install
-```
-
-Note: If you are having trouble with compiling, try [building with flatpak](#build-with-flatpak).
-
-### Build With Flatpak
+### With Flatpak (Recommended)
 
 #### Make sure you have the elementary sdk
 ```sh
@@ -49,6 +26,27 @@ flatpak install -y appcenter io.elementary.Platform io.elementary.Sdk
 Once the command above is complete, you'll be able to launch the app from your applications list.
 
 Note: Since flatpak apps runs in a sandbox, some development operations will be different from how you would usually perform them. Please refer to the Flatpak documentation for help: https://docs.flatpak.org/en/latest/index.html
+
+### Using Meson
+#### Dependencies Required
+
+- `libgtk-3-dev`
+- `libgranite-dev`
+- `libhandy-1-dev`
+- `meson`
+- `valac`
+- if you are on elementary OS 5 you will need [elementary-stylesheet](https://github.com/elementary/stylesheet)
+
+  > Note: for non elementary distros you will need to install [elementary-icons](https://github.com/elementary/icons) and [elementary-stylesheet](https://github.com/elementary/stylesheet)
+
+Once the above mentioned dependencies are resolved, Photostat can be compiled and installed.
+
+```sh
+meson build --prefix=/usr
+cd build
+sudo ninja install
+```
+
 
 ## :thinking: Questions
 

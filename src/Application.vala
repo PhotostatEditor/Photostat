@@ -27,24 +27,50 @@ namespace Photostat {
 public class Photostat.Application : Gtk.Application {
     public GLib.List<Window> windows;
 
+    private static bool create_new_window = false;
+
+    const OptionEntry[] ENTRIES = {
+        { "new-window", 'n', 0, OptionArg.NONE, null, ("New Window"), null },
+        { null }
+    };
+
     construct {
+        flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
+
         application_id = "com.github.photostat_editor.photostat";
 
-        flags = ApplicationFlags.FLAGS_NONE;
+        add_main_option_entries (ENTRIES);
 
         settings = new Photostat.Services.Settings ("com.github.photostat_editor.photostat");
         windows = new GLib.List<Window> ();
     }
 
-    public void new_window () {
-        new Photostat.Window (this).present ();
+    public override int command_line (GLib.ApplicationCommandLine command_line) {
+        var options = command_line.get_options_dict ();
+
+        if (options.contains ("new-window")) {
+            create_new_window = true;
+        }
+
+        activate ();
+
+        return Posix.EXIT_SUCCESS;
     }
 
     public override void activate () {
         init_theme ();
 
-        var window = new Photostat.Window (this);
-        add_window (window);
+        var window = get_last_window ();
+
+        if (window != null && create_new_window) {
+            create_new_window = false;
+            new_window ();
+        } else if (window == null) {
+            window = new_window ();
+            window.show ();
+        } else {
+            window.present ();
+        }
 
         var quit_action = new SimpleAction ("quit", null);
 
@@ -65,13 +91,34 @@ public class Photostat.Application : Gtk.Application {
             return;
         }
 
-        Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
-        Gtk.Settings.get_default ().set_property ("gtk-icon-theme-name", "elementary");
+        var gtk_settings = Gtk.Settings.get_default ();
+        gtk_settings.gtk_application_prefer_dark_theme = true;
+        gtk_settings.set_property ("gtk-icon-theme-name", "elementary");
+
+        weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
+        default_theme.add_resource_path ("/com/github/photostat_editor/photostat");
         GLib.Value value = GLib.Value (GLib.Type.STRING);
-        Gtk.Settings.get_default ().get_property ("gtk-theme-name", ref value);
+        gtk_settings.get_property ("gtk-theme-name", ref value);
         if (!value.get_string ().has_prefix ("io.elementary.stylesheet")) {
-            Gtk.Settings.get_default ().set_property ("gtk-theme-name", "io.elementary.stylesheet.blueberry");
+            gtk_settings.set_property ("gtk-theme-name", "io.elementary.stylesheet.blueberry");
         }
+
+        var provider = new Gtk.CssProvider ();
+        provider.load_from_resource ("/com/github/photostat_editor/photostat/styles.css");
+        Gtk.StyleContext.add_provider_for_screen (
+            Gdk.Screen.get_default (),
+            provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
+    }
+
+    public Photostat.Window? get_last_window () {
+        unowned List<Gtk.Window> windows = get_windows ();
+        return windows.length () > 0 ? windows.last ().data as Window : null;
+    }
+
+    public Photostat.Window new_window () {
+        return new Window (this);
     }
 }
 

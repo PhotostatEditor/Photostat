@@ -15,6 +15,9 @@ executable (
     'Widgets/HeaderBarButton.vala',
     'Widgets/ButtonImage.vala',
     'Widgets/MenuButton.vala',
+    'Widgets/WelcomeView.vala',
+    'Widgets/TemplateRow.vala',
+    'Widgets/TemplateButton.vala',
 
     'Layouts/HeaderBar.vala',
     'Layouts/MainWindow.vala',
@@ -24,10 +27,12 @@ executable (
     'Layouts/ToolsBar.vala',
 
     'Dialogs/SettingsDialog.vala',
+    'Dialogs/TemplateChooser.vala',
     dependencies: [
         dependency('gtk+-3.0'),
         dependency('granite'),
-        dependency('libhandy-1',version: '>=0.90.0')
+        dependency('libhandy-1',version: '>=0.90.0'),
+        meson.get_compiler('vala').find_library('posix')
     ],
     install: true
 )

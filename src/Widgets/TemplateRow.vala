@@ -16,24 +16,29 @@
  * You should have received a copy of the GNU General Public License
  * along with Photostat. If not, see <https://www.gnu.org/licenses/>.
  *
- * Authored by: Abdallah "Abdallah-Moh" Mohammad <abdallah.mam29@gmail.com>
-*/
+ * Authored by: Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
+ */
 
-public class Photostat.Layouts.MainCanvas : Gtk.Grid {
-    public weak Photostat.Window window { get; construct; }
+public class Photostat.Widgets.TemplateRow : Gtk.ListBoxRow {
+    private Gtk.Label row_label;
+    private Gtk.Image row_icon;
 
+    public TemplateRow (string name, string icon_name) {
 
-    public MainCanvas (Photostat.Window window) {
-        Object (
-            window: window,
-            orientation: Gtk.Orientation.HORIZONTAL
-        );
-    }
+        row_label = new Gtk.Label (name) {
+            margin_start = 5,
+            halign = Gtk.Align.START,
+            hexpand = true,
+            ellipsize = Pango.EllipsizeMode.END
+        };
+        row_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.MENU) {
+            margin_start = 5
+        };
 
-    construct {
-        var welcome_view = new Photostat.Widgets.WelcomeView (window);
+        var grid = new Gtk.Grid ();
+        grid.attach (row_icon, 0, 0);
+        grid.attach (row_label, 1, 0);
 
-        add (welcome_view);
-        show_all ();
+        add (grid);
     }
 }

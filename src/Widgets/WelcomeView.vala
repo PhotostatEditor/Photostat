@@ -16,24 +16,32 @@
  * You should have received a copy of the GNU General Public License
  * along with Photostat. If not, see <https://www.gnu.org/licenses/>.
  *
- * Authored by: Abdallah "Abdallah-Moh" Mohammad <abdallah.mam29@gmail.com>
-*/
+ * Authored by: Rajdeep "Suzie97" Singha <singharajdeep97@gmail.com>
+ */
 
-public class Photostat.Layouts.MainCanvas : Gtk.Grid {
+public class Photostat.Widgets.WelcomeView : Granite.Widgets.Welcome {
     public weak Photostat.Window window { get; construct; }
 
-
-    public MainCanvas (Photostat.Window window) {
+    public WelcomeView (Photostat.Window window) {
         Object (
             window: window,
-            orientation: Gtk.Orientation.HORIZONTAL
+            title: _("Import Some Photos"),
+            subtitle: _("Open a photo to begin editing")
         );
     }
 
     construct {
-        var welcome_view = new Photostat.Widgets.WelcomeView (window);
+        append ("document-new", _("New Document"), _("Create a new empty document"));
+        append ("document-open", _("Open Image"), _("Open a saved image"));
 
-        add (welcome_view);
-        show_all ();
+        activated.connect ((i) => {
+            if (i == 0) {
+                var template_view = new Photostat.Dialogs.TemplateChooser (window);
+                template_view.show_all ();
+                if (window.get_children () != null) {
+                    window.accept_focus = false;
+                }
+            }
+        });
     }
 }

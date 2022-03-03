@@ -22,8 +22,8 @@
 
 public class Photostat.Widgets.MenuButton : Gtk.Grid {
     public Gtk.MenuButton button;
-    public Gtk.Label label_btn;
-    public ButtonImage image;
+    private Gtk.Label label_btn;
+    private ButtonImage image;
 
     public MenuButton (string icon_name, string name, string[]? accels = null) {
         label_btn = new Gtk.Label (name);

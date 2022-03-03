@@ -8,3 +8,9 @@ Icon=com.github.photostat_editor.photostat
 Terminal=false
 Type=Application
 Keywords=Photo;Graphics;Photography;Edit;Editing
+Actions=NewWindow;
+
+[Desktop Action NewWindow]
+Name=New Window
+Icon=window-new
+Exec=com.github.photostat_editor.photostat -n

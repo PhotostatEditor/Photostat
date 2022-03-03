@@ -48,7 +48,7 @@ public class Photostat.Layouts.MainWindow : Gtk.Grid {
         child_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
 
         left_sidebar = new Gtk.Grid ();
-        left_sidebar.get_style_context ().add_class ("sidebar");
+        left_sidebar.get_style_context ().add_class ("panel");
         left_sidebar.vexpand = true;
         left_sidebar.hexpand = true;
         left_sidebar.attach (tools_bar, 0, 0, 1, 1);
